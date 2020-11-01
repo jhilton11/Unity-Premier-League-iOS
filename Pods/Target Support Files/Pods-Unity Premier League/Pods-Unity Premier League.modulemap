@@ -1,0 +1,6 @@
+framework module Pods_Unity_Premier_League {
+  umbrella header "Pods-Unity Premier League-umbrella.h"
+
+  export *
+  module * { export * }
+}

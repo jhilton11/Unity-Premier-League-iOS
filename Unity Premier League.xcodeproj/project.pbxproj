@@ -1,0 +1,802 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02A77BDD405B27B84BB52BE7 /* Pods_Unity_Premier_League.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C694F4614E151C3AE3C8F31C /* Pods_Unity_Premier_League.framework */; };
+		1825E90F252C415D00FC2AFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1825E90E252C415D00FC2AFF /* AppDelegate.swift */; };
+		1825E911252C415D00FC2AFF /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1825E910252C415D00FC2AFF /* NewsViewController.swift */; };
+		1825E913252C415D00FC2AFF /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1825E912252C415D00FC2AFF /* TeamsViewController.swift */; };
+		1825E916252C415D00FC2AFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1825E914252C415D00FC2AFF /* Main.storyboard */; };
+		1825E918252C415E00FC2AFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1825E917252C415E00FC2AFF /* Assets.xcassets */; };
+		1825E91B252C415E00FC2AFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1825E919252C415E00FC2AFF /* LaunchScreen.storyboard */; };
+		1825E926252C415E00FC2AFF /* Unity_Premier_LeagueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1825E925252C415E00FC2AFF /* Unity_Premier_LeagueTests.swift */; };
+		1825E931252C415E00FC2AFF /* Unity_Premier_LeagueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1825E930252C415E00FC2AFF /* Unity_Premier_LeagueUITests.swift */; };
+		1825E93F252C473B00FC2AFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1825E93E252C473B00FC2AFF /* GoogleService-Info.plist */; };
+		1825E949252C6F8400FC2AFF /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1825E948252C6F8400FC2AFF /* TeamCell.swift */; };
+		1825E94B252C6FB300FC2AFF /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1825E94A252C6FB300FC2AFF /* NewsCell.swift */; };
+		1825E94D252C81CB00FC2AFF /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1825E94C252C81CB00FC2AFF /* Team.swift */; };
+		1839F5ED252DAF7D006DA590 /* FixturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839F5EC252DAF7D006DA590 /* FixturesViewController.swift */; };
+		1839F5EF252DB69C006DA590 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839F5EE252DB69C006DA590 /* StatsViewController.swift */; };
+		1873E9C425387283001F891C /* FixturesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873E9C325387283001F891C /* FixturesCell.swift */; };
+		1873E9C625387770001F891C /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873E9C525387770001F891C /* Fixture.swift */; };
+		1873E9C825397DEE001F891C /* ViewMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873E9C725397DEE001F891C /* ViewMatchViewController.swift */; };
+		1873E9CA2539875D001F891C /* MatchStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873E9C92539875D001F891C /* MatchStat.swift */; };
+		1873E9CC2539A3D6001F891C /* MatchStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873E9CB2539A3D6001F891C /* MatchStatCell.swift */; };
+		1884F537252F1B1D0091B552 /* ViewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884F536252F1B1D0091B552 /* ViewTeamViewController.swift */; };
+		1884F539252F2F0D0091B552 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884F538252F2F0D0091B552 /* PlayerViewController.swift */; };
+		1884F53B252F41890091B552 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884F53A252F41890091B552 /* Player.swift */; };
+		1884F53D252F53490091B552 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884F53C252F53490091B552 /* News.swift */; };
+		1886A23A253073FF00F4E2B5 /* ViewNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886A239253073FE00F4E2B5 /* ViewNewsViewController.swift */; };
+		4EBA5960EE34075D91FED0D1 /* Pods_Unity_Premier_LeagueUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D900111C46C129A81CBA9E61 /* Pods_Unity_Premier_LeagueUITests.framework */; };
+		4F9B34B06817A840B917D387 /* Pods_Unity_Premier_LeagueTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF0836CC3E3B9C01DC45A224 /* Pods_Unity_Premier_LeagueTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1825E922252C415E00FC2AFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1825E903252C415D00FC2AFF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1825E90A252C415D00FC2AFF;
+			remoteInfo = "Unity Premier League";
+		};
+		1825E92D252C415E00FC2AFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1825E903252C415D00FC2AFF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1825E90A252C415D00FC2AFF;
+			remoteInfo = "Unity Premier League";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1825E90B252C415D00FC2AFF /* Unity Premier League.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Unity Premier League.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1825E90E252C415D00FC2AFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1825E910252C415D00FC2AFF /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		1825E912252C415D00FC2AFF /* TeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
+		1825E915252C415D00FC2AFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1825E917252C415E00FC2AFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1825E91A252C415E00FC2AFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1825E91C252C415E00FC2AFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1825E921252C415E00FC2AFF /* Unity Premier LeagueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unity Premier LeagueTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1825E925252C415E00FC2AFF /* Unity_Premier_LeagueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unity_Premier_LeagueTests.swift; sourceTree = "<group>"; };
+		1825E927252C415E00FC2AFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1825E92C252C415E00FC2AFF /* Unity Premier LeagueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unity Premier LeagueUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1825E930252C415E00FC2AFF /* Unity_Premier_LeagueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unity_Premier_LeagueUITests.swift; sourceTree = "<group>"; };
+		1825E932252C415E00FC2AFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1825E93E252C473B00FC2AFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1825E948252C6F8400FC2AFF /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
+		1825E94A252C6FB300FC2AFF /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		1825E94C252C81CB00FC2AFF /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		1839F5EC252DAF7D006DA590 /* FixturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesViewController.swift; sourceTree = "<group>"; };
+		1839F5EE252DB69C006DA590 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		1873E9C325387283001F891C /* FixturesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesCell.swift; sourceTree = "<group>"; };
+		1873E9C525387770001F891C /* Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixture.swift; sourceTree = "<group>"; };
+		1873E9C725397DEE001F891C /* ViewMatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMatchViewController.swift; sourceTree = "<group>"; };
+		1873E9C92539875D001F891C /* MatchStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchStat.swift; sourceTree = "<group>"; };
+		1873E9CB2539A3D6001F891C /* MatchStatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchStatCell.swift; sourceTree = "<group>"; };
+		1884F536252F1B1D0091B552 /* ViewTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTeamViewController.swift; sourceTree = "<group>"; };
+		1884F538252F2F0D0091B552 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		1884F53A252F41890091B552 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		1884F53C252F53490091B552 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		1886A239253073FE00F4E2B5 /* ViewNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNewsViewController.swift; sourceTree = "<group>"; };
+		7EE37F3B9EDABAB712E3272A /* Pods-Unity Premier LeagueUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier LeagueUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier LeagueUITests/Pods-Unity Premier LeagueUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9916D4F64D588A40052E8831 /* Pods-Unity Premier LeagueUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier LeagueUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier LeagueUITests/Pods-Unity Premier LeagueUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AF0836CC3E3B9C01DC45A224 /* Pods_Unity_Premier_LeagueTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unity_Premier_LeagueTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B337F3B35B5C7CE3C2FFB6E2 /* Pods-Unity Premier League.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier League.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier League/Pods-Unity Premier League.release.xcconfig"; sourceTree = "<group>"; };
+		C694F4614E151C3AE3C8F31C /* Pods_Unity_Premier_League.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unity_Premier_League.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D18D22456479CCB549DCEFDC /* Pods-Unity Premier LeagueTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier LeagueTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier LeagueTests/Pods-Unity Premier LeagueTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D900111C46C129A81CBA9E61 /* Pods_Unity_Premier_LeagueUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unity_Premier_LeagueUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7C2FD818615F8740AF102FF /* Pods-Unity Premier League.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier League.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier League/Pods-Unity Premier League.debug.xcconfig"; sourceTree = "<group>"; };
+		FFCAEFBABE7F6FB1D1C0D947 /* Pods-Unity Premier LeagueTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier LeagueTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier LeagueTests/Pods-Unity Premier LeagueTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1825E908252C415D00FC2AFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02A77BDD405B27B84BB52BE7 /* Pods_Unity_Premier_League.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1825E91E252C415E00FC2AFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F9B34B06817A840B917D387 /* Pods_Unity_Premier_LeagueTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1825E929252C415E00FC2AFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EBA5960EE34075D91FED0D1 /* Pods_Unity_Premier_LeagueUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1825E902252C415D00FC2AFF = {
+			isa = PBXGroup;
+			children = (
+				1825E90D252C415D00FC2AFF /* Unity Premier League */,
+				1825E924252C415E00FC2AFF /* Unity Premier LeagueTests */,
+				1825E92F252C415E00FC2AFF /* Unity Premier LeagueUITests */,
+				1825E90C252C415D00FC2AFF /* Products */,
+				F68D4DD2671BFB5988BCE1AC /* Pods */,
+				DE71E668AF28BA5B05E81631 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1825E90C252C415D00FC2AFF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1825E90B252C415D00FC2AFF /* Unity Premier League.app */,
+				1825E921252C415E00FC2AFF /* Unity Premier LeagueTests.xctest */,
+				1825E92C252C415E00FC2AFF /* Unity Premier LeagueUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1825E90D252C415D00FC2AFF /* Unity Premier League */ = {
+			isa = PBXGroup;
+			children = (
+				1825E93E252C473B00FC2AFF /* GoogleService-Info.plist */,
+				1825E90E252C415D00FC2AFF /* AppDelegate.swift */,
+				1825E910252C415D00FC2AFF /* NewsViewController.swift */,
+				1825E912252C415D00FC2AFF /* TeamsViewController.swift */,
+				1825E914252C415D00FC2AFF /* Main.storyboard */,
+				1825E917252C415E00FC2AFF /* Assets.xcassets */,
+				1825E919252C415E00FC2AFF /* LaunchScreen.storyboard */,
+				1825E91C252C415E00FC2AFF /* Info.plist */,
+				1825E948252C6F8400FC2AFF /* TeamCell.swift */,
+				1825E94A252C6FB300FC2AFF /* NewsCell.swift */,
+				1825E94C252C81CB00FC2AFF /* Team.swift */,
+				1839F5EC252DAF7D006DA590 /* FixturesViewController.swift */,
+				1839F5EE252DB69C006DA590 /* StatsViewController.swift */,
+				1884F536252F1B1D0091B552 /* ViewTeamViewController.swift */,
+				1884F538252F2F0D0091B552 /* PlayerViewController.swift */,
+				1884F53A252F41890091B552 /* Player.swift */,
+				1884F53C252F53490091B552 /* News.swift */,
+				1886A239253073FE00F4E2B5 /* ViewNewsViewController.swift */,
+				1873E9C325387283001F891C /* FixturesCell.swift */,
+				1873E9C525387770001F891C /* Fixture.swift */,
+				1873E9C725397DEE001F891C /* ViewMatchViewController.swift */,
+				1873E9C92539875D001F891C /* MatchStat.swift */,
+				1873E9CB2539A3D6001F891C /* MatchStatCell.swift */,
+			);
+			path = "Unity Premier League";
+			sourceTree = "<group>";
+		};
+		1825E924252C415E00FC2AFF /* Unity Premier LeagueTests */ = {
+			isa = PBXGroup;
+			children = (
+				1825E925252C415E00FC2AFF /* Unity_Premier_LeagueTests.swift */,
+				1825E927252C415E00FC2AFF /* Info.plist */,
+			);
+			path = "Unity Premier LeagueTests";
+			sourceTree = "<group>";
+		};
+		1825E92F252C415E00FC2AFF /* Unity Premier LeagueUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1825E930252C415E00FC2AFF /* Unity_Premier_LeagueUITests.swift */,
+				1825E932252C415E00FC2AFF /* Info.plist */,
+			);
+			path = "Unity Premier LeagueUITests";
+			sourceTree = "<group>";
+		};
+		DE71E668AF28BA5B05E81631 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C694F4614E151C3AE3C8F31C /* Pods_Unity_Premier_League.framework */,
+				AF0836CC3E3B9C01DC45A224 /* Pods_Unity_Premier_LeagueTests.framework */,
+				D900111C46C129A81CBA9E61 /* Pods_Unity_Premier_LeagueUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F68D4DD2671BFB5988BCE1AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F7C2FD818615F8740AF102FF /* Pods-Unity Premier League.debug.xcconfig */,
+				B337F3B35B5C7CE3C2FFB6E2 /* Pods-Unity Premier League.release.xcconfig */,
+				D18D22456479CCB549DCEFDC /* Pods-Unity Premier LeagueTests.debug.xcconfig */,
+				FFCAEFBABE7F6FB1D1C0D947 /* Pods-Unity Premier LeagueTests.release.xcconfig */,
+				7EE37F3B9EDABAB712E3272A /* Pods-Unity Premier LeagueUITests.debug.xcconfig */,
+				9916D4F64D588A40052E8831 /* Pods-Unity Premier LeagueUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1825E90A252C415D00FC2AFF /* Unity Premier League */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1825E935252C415E00FC2AFF /* Build configuration list for PBXNativeTarget "Unity Premier League" */;
+			buildPhases = (
+				91C79C1E42B22D687B33E3E1 /* [CP] Check Pods Manifest.lock */,
+				1825E907252C415D00FC2AFF /* Sources */,
+				1825E908252C415D00FC2AFF /* Frameworks */,
+				1825E909252C415D00FC2AFF /* Resources */,
+				7645F1D05584FC536B5723E5 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Unity Premier League";
+			productName = "Unity Premier League";
+			productReference = 1825E90B252C415D00FC2AFF /* Unity Premier League.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1825E920252C415E00FC2AFF /* Unity Premier LeagueTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1825E938252C415E00FC2AFF /* Build configuration list for PBXNativeTarget "Unity Premier LeagueTests" */;
+			buildPhases = (
+				23AF3772DCB5CBAE33237ED4 /* [CP] Check Pods Manifest.lock */,
+				1825E91D252C415E00FC2AFF /* Sources */,
+				1825E91E252C415E00FC2AFF /* Frameworks */,
+				1825E91F252C415E00FC2AFF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1825E923252C415E00FC2AFF /* PBXTargetDependency */,
+			);
+			name = "Unity Premier LeagueTests";
+			productName = "Unity Premier LeagueTests";
+			productReference = 1825E921252C415E00FC2AFF /* Unity Premier LeagueTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1825E92B252C415E00FC2AFF /* Unity Premier LeagueUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1825E93B252C415E00FC2AFF /* Build configuration list for PBXNativeTarget "Unity Premier LeagueUITests" */;
+			buildPhases = (
+				4D34150A20F2F9D268C3A3F5 /* [CP] Check Pods Manifest.lock */,
+				1825E928252C415E00FC2AFF /* Sources */,
+				1825E929252C415E00FC2AFF /* Frameworks */,
+				1825E92A252C415E00FC2AFF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1825E92E252C415E00FC2AFF /* PBXTargetDependency */,
+			);
+			name = "Unity Premier LeagueUITests";
+			productName = "Unity Premier LeagueUITests";
+			productReference = 1825E92C252C415E00FC2AFF /* Unity Premier LeagueUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1825E903252C415D00FC2AFF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Appify Mobile Apps";
+				TargetAttributes = {
+					1825E90A252C415D00FC2AFF = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					1825E920252C415E00FC2AFF = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 1825E90A252C415D00FC2AFF;
+					};
+					1825E92B252C415E00FC2AFF = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 1825E90A252C415D00FC2AFF;
+					};
+				};
+			};
+			buildConfigurationList = 1825E906252C415D00FC2AFF /* Build configuration list for PBXProject "Unity Premier League" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1825E902252C415D00FC2AFF;
+			productRefGroup = 1825E90C252C415D00FC2AFF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1825E90A252C415D00FC2AFF /* Unity Premier League */,
+				1825E920252C415E00FC2AFF /* Unity Premier LeagueTests */,
+				1825E92B252C415E00FC2AFF /* Unity Premier LeagueUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1825E909252C415D00FC2AFF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1825E91B252C415E00FC2AFF /* LaunchScreen.storyboard in Resources */,
+				1825E93F252C473B00FC2AFF /* GoogleService-Info.plist in Resources */,
+				1825E918252C415E00FC2AFF /* Assets.xcassets in Resources */,
+				1825E916252C415D00FC2AFF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1825E91F252C415E00FC2AFF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1825E92A252C415E00FC2AFF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		23AF3772DCB5CBAE33237ED4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Unity Premier LeagueTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4D34150A20F2F9D268C3A3F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Unity Premier LeagueUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7645F1D05584FC536B5723E5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Unity Premier League/Pods-Unity Premier League-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Unity Premier League/Pods-Unity Premier League-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91C79C1E42B22D687B33E3E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Unity Premier League-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1825E907252C415D00FC2AFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1839F5ED252DAF7D006DA590 /* FixturesViewController.swift in Sources */,
+				1825E94D252C81CB00FC2AFF /* Team.swift in Sources */,
+				1884F537252F1B1D0091B552 /* ViewTeamViewController.swift in Sources */,
+				1873E9CC2539A3D6001F891C /* MatchStatCell.swift in Sources */,
+				1839F5EF252DB69C006DA590 /* StatsViewController.swift in Sources */,
+				1873E9CA2539875D001F891C /* MatchStat.swift in Sources */,
+				1884F53B252F41890091B552 /* Player.swift in Sources */,
+				1825E913252C415D00FC2AFF /* TeamsViewController.swift in Sources */,
+				1886A23A253073FF00F4E2B5 /* ViewNewsViewController.swift in Sources */,
+				1825E949252C6F8400FC2AFF /* TeamCell.swift in Sources */,
+				1825E90F252C415D00FC2AFF /* AppDelegate.swift in Sources */,
+				1825E911252C415D00FC2AFF /* NewsViewController.swift in Sources */,
+				1884F539252F2F0D0091B552 /* PlayerViewController.swift in Sources */,
+				1884F53D252F53490091B552 /* News.swift in Sources */,
+				1873E9C825397DEE001F891C /* ViewMatchViewController.swift in Sources */,
+				1873E9C425387283001F891C /* FixturesCell.swift in Sources */,
+				1825E94B252C6FB300FC2AFF /* NewsCell.swift in Sources */,
+				1873E9C625387770001F891C /* Fixture.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1825E91D252C415E00FC2AFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1825E926252C415E00FC2AFF /* Unity_Premier_LeagueTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1825E928252C415E00FC2AFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1825E931252C415E00FC2AFF /* Unity_Premier_LeagueUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1825E923252C415E00FC2AFF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1825E90A252C415D00FC2AFF /* Unity Premier League */;
+			targetProxy = 1825E922252C415E00FC2AFF /* PBXContainerItemProxy */;
+		};
+		1825E92E252C415E00FC2AFF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1825E90A252C415D00FC2AFF /* Unity Premier League */;
+			targetProxy = 1825E92D252C415E00FC2AFF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1825E914252C415D00FC2AFF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1825E915252C415D00FC2AFF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1825E919252C415E00FC2AFF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1825E91A252C415E00FC2AFF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1825E933252C415E00FC2AFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1825E934252C415E00FC2AFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1825E936252C415E00FC2AFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7C2FD818615F8740AF102FF /* Pods-Unity Premier League.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D23XA4RQVP;
+				INFOPLIST_FILE = "Unity Premier League/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appify.Unity-Premier-League";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1825E937252C415E00FC2AFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B337F3B35B5C7CE3C2FFB6E2 /* Pods-Unity Premier League.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D23XA4RQVP;
+				INFOPLIST_FILE = "Unity Premier League/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appify.Unity-Premier-League";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1825E939252C415E00FC2AFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D18D22456479CCB549DCEFDC /* Pods-Unity Premier LeagueTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D23XA4RQVP;
+				INFOPLIST_FILE = "Unity Premier LeagueTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appify.Unity-Premier-LeagueTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Unity Premier League.app/Unity Premier League";
+			};
+			name = Debug;
+		};
+		1825E93A252C415E00FC2AFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFCAEFBABE7F6FB1D1C0D947 /* Pods-Unity Premier LeagueTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D23XA4RQVP;
+				INFOPLIST_FILE = "Unity Premier LeagueTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appify.Unity-Premier-LeagueTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Unity Premier League.app/Unity Premier League";
+			};
+			name = Release;
+		};
+		1825E93C252C415E00FC2AFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EE37F3B9EDABAB712E3272A /* Pods-Unity Premier LeagueUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D23XA4RQVP;
+				INFOPLIST_FILE = "Unity Premier LeagueUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appify.Unity-Premier-LeagueUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Unity Premier League";
+			};
+			name = Debug;
+		};
+		1825E93D252C415E00FC2AFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9916D4F64D588A40052E8831 /* Pods-Unity Premier LeagueUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D23XA4RQVP;
+				INFOPLIST_FILE = "Unity Premier LeagueUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appify.Unity-Premier-LeagueUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Unity Premier League";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1825E906252C415D00FC2AFF /* Build configuration list for PBXProject "Unity Premier League" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1825E933252C415E00FC2AFF /* Debug */,
+				1825E934252C415E00FC2AFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1825E935252C415E00FC2AFF /* Build configuration list for PBXNativeTarget "Unity Premier League" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1825E936252C415E00FC2AFF /* Debug */,
+				1825E937252C415E00FC2AFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1825E938252C415E00FC2AFF /* Build configuration list for PBXNativeTarget "Unity Premier LeagueTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1825E939252C415E00FC2AFF /* Debug */,
+				1825E93A252C415E00FC2AFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1825E93B252C415E00FC2AFF /* Build configuration list for PBXNativeTarget "Unity Premier LeagueUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1825E93C252C415E00FC2AFF /* Debug */,
+				1825E93D252C415E00FC2AFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1825E903252C415D00FC2AFF /* Project object */;
+}
