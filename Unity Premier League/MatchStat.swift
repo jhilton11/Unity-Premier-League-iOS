@@ -16,9 +16,11 @@ class MatchStat {
     var playerImageUrl: String = ""
     var matchId: String = ""
     var eventType: String = ""
+    var leagueId: String = ""
     var isHome: Bool?
+    var teamName: String?
     
-    init(id: String, name: String, playerId: String, url: String, matchId: String, type: String) {
+    init(id: String, name: String, playerId: String, url: String, matchId: String, type: String, league: String) {
         self.id = id
         self.playerName = name
         self.playerId = playerId

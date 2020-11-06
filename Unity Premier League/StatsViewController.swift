@@ -12,6 +12,7 @@ import Firebase
 class StatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var goalScorers: [Player] = []
+    var stats: [MatchStat] = []
     var leagues: [String] = []
 
     @IBOutlet weak var leaguePicker: UIPickerView!
@@ -47,12 +48,45 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
                     print(id)
                 }
                 self.leaguePicker.reloadAllComponents()
-                self.loadScorers(id: self.leagues[0])
+                self.loadStats(leagueId: self.leagues[0])
         }
     }
     
-    func loadScorers(id: String) {
+    func loadStats(leagueId: String) {
+        let db = Firestore.firestore()
         
+        db.collection("stats").whereField("leagueId", isEqualTo: leagueId)
+            .whereField("type", isEqualTo: "goal")
+            .addSnapshotListener {querySnapshot, error in
+                guard let snapshots = querySnapshot?.documents else {
+                    print("Error: \(error.debugDescription)")
+                    return
+                }
+                
+                print("Snapshot has \(querySnapshot?.count) stats")
+                
+                self.stats = []
+                
+                for document in snapshots {
+                    let id = document.data()["id"] as! String
+                    let name = document.data()["name"] as! String
+                    let playerId = document.data()["playerId"] as! String
+                    let imageUrl = document.data()["playerImageUrl"] as! String
+                    let matchId = document.data()["matchId"] as! String
+                    let leagueId = document.data()["leagueId"] as! String
+                    let teamName = document.data()["teamName"] as! String
+                    let type = document.data()["type"] as! String
+                    let isHome = document.data()["home"] as! Bool
+                    
+                    let stat = MatchStat(id: id, name: name, playerId: playerId, url: imageUrl, matchId: matchId, type: type, league: leagueId)
+                    stat.isHome = isHome
+                    stat.teamName = teamName
+                    self.stats.append(stat);
+                }
+                self.goalScorers = self.getScorers(stats: self.stats)
+                
+                self.scorersTable.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,8 +94,11 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "scorersCell")
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "scorersCell") as! PlayerStatCell
+        let row = indexPath.row
+        let player = goalScorers[row]
+        cell.loadPlayerStat(player: player)
+        return cell
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -73,11 +110,42 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        loadScorers(id: leagues[row])
+        loadStats(leagueId: leagues[row])
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return leagues[row]
+    }
+    
+    func getScorers(stats: [MatchStat]) -> [Player] {
+        //create an empty dictionary of players
+        var playerDict: [String:Player] = [:]
+        
+        //for each stat, search for playerId in stat dictionary. If its there, increase the number of goals by one. Otherwise add it to the dictionary and set unmber of goals to one
+        for stat in stats {
+            let playerId = stat.playerId
+            
+            if let player = playerDict[playerId] {
+                let goals = player.goals + 1
+                player.goals = goals
+                playerDict[playerId] = player
+            } else {
+                let name = stat.playerName
+                let id = stat.playerId
+                let imageUrl = stat.playerImageUrl
+                let p: Player = Player(id: id, name: name, imageUrl:imageUrl)
+                p.teamName = stat.teamName
+                p.goals = 1
+                playerDict[playerId] = p
+            }
+        }
+        
+        //extract player array from dictionary and return it
+        var array = Array(playerDict.values)
+        
+        //order the player array by goals in descending order
+        array.sort(by: {$0.goals > $1.goals})
+        return array
     }
     
 

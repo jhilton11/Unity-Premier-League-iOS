@@ -1,21 +1,18 @@
 //
-//  FixturesCell.swift
+//  PlayerStatCell.swift
 //  Unity Premier League
 //
-//  Created by APPLE on 10/15/20.
+//  Created by APPLE on 11/6/20.
 //  Copyright © 2020 Appify Mobile Apps. All rights reserved.
 //
 
 import UIKit
 
-class FixturesCell: UITableViewCell {
+class PlayerStatCell: UITableViewCell {
 
-    @IBOutlet weak var numberLabel: UILabel!
-    @IBOutlet weak var homeLogo: UIImageView!
-    @IBOutlet weak var homeTeam: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var awayTeam: UILabel!
-    @IBOutlet weak var awayLogo: UIImageView!
+    @IBOutlet weak var playerImage: UIImageView!
+    @IBOutlet weak var playerName: UILabel!
+    @IBOutlet weak var playerGoals: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,17 +25,10 @@ class FixturesCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setMatch(match: Fixture) {
-        if let no = match.cellNo {
-            numberLabel.text = "\(no)"
-        }
-        
-        homeTeam.text = match.homeTeam
-        awayTeam.text = match.awayTeam
-        scoreLabel.text = "\(match.homeScore) - \(match.awayScore)"
-        
-        loadImage(view: homeLogo, imageUrl: match.homeTeamImgUrl)
-        loadImage(view: awayLogo, imageUrl: match.awayTeamImgUrl)
+    func loadPlayerStat(player: Player) {
+        loadImage(view: playerImage, imageUrl: player.imageUrl)
+        playerName.text = "\(player.name) (\(player.teamName ?? ""))"
+        playerGoals.text = "\(player.goals)"
     }
     
     func loadImage(view: UIImageView, imageUrl: String) {
@@ -47,7 +37,7 @@ class FixturesCell: UITableViewCell {
             let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
             
             DispatchQueue.main.async {
-                print("Main thread stuffs")
+                //print("Main thread stuffs")
                 view.image = UIImage(data: data!)
                 
                 //self.setNeedsLayout() //invalidate current layout
@@ -55,4 +45,5 @@ class FixturesCell: UITableViewCell {
             }
         }
     }
+
 }

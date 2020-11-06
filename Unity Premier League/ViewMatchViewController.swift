@@ -34,6 +34,7 @@ class ViewMatchViewController: UIViewController, UITableViewDelegate, UITableVie
             
             loadImage(view: homeLogo, imageUrl: m.homeTeamImgUrl)
             loadImage(view: awayLogo, imageUrl: m.awayTeamImgUrl)
+            loadStats(matchId: m.id)
         }
     }
     
@@ -43,7 +44,7 @@ class ViewMatchViewController: UIViewController, UITableViewDelegate, UITableVie
             let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
             
             DispatchQueue.main.async {
-                print("Main thread stuffs")
+                //print("Main thread stuffs")
                 view.image = UIImage(data: data!)
                 
                 //self.setNeedsLayout() //invalidate current layout
@@ -69,14 +70,15 @@ class ViewMatchViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 for document in snapshots {
                     let id = document.data()["id"] as! String
-                    let name = document.data()["playerName"] as! String
+                    let name = document.data()["name"] as! String
                     let playerId = document.data()["playerId"] as! String
-                    let imageUrl = document.data()["imageUrl"] as! String
+                    let imageUrl = document.data()["playerImageUrl"] as! String
                     let matchId = document.data()["matchId"] as! String
-                    let type = document.data()["eventType"] as! String
-                    let isHome = document.data()["isHome"] as! Bool
+                    let leagueId = document.data()["leagueId"] as! String
+                    let type = document.data()["type"] as! String
+                    let isHome = document.data()["home"] as! Bool
                     
-                    let stat = MatchStat(id: id, name: name, playerId: playerId, url: imageUrl, matchId: matchId, type: type)
+                    let stat = MatchStat(id: id, name: name, playerId: playerId, url: imageUrl, matchId: matchId, type: type, league: leagueId)
                     stat.isHome = isHome
                     self.stats.append(stat);
                 }
@@ -90,7 +92,7 @@ class ViewMatchViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MatchstatCell") as! MatchStatCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "matchStatsCell") as! MatchStatCell
         let row = indexPath.row
         cell.loadStat(stat: stats[row])
         return cell

@@ -68,8 +68,10 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     let id = document.data()["id"] as! String
                     let name = document.data()["name"] as! String
                     let imageUrl = document.data()["imageUrl"] as! String
+                    let leagueId = document.data()["currentLeague"] as! String
                     
                     let team = Team(id, name, imageUrl)
+                    team.currentLeague = leagueId
                     self.teams.append(team);
                 }
                 

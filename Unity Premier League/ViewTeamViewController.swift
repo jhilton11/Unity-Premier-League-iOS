@@ -24,6 +24,7 @@ class ViewTeamViewController: UIViewController, UITableViewDelegate, UITableView
         // Do any additional setup after loading the view.
         if let myTeam = team {
             self.title = "\(myTeam.name)"
+            print("\(myTeam.name)")
             loadData(team: myTeam)
         } else {
             self.title = "Players"
@@ -41,7 +42,7 @@ class ViewTeamViewController: UIViewController, UITableViewDelegate, UITableView
             let url = URL(string: (self.team?.imageUrl)!)
             let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
             DispatchQueue.main.async {
-                print("Main thread stuffs")
+                //print("Main thread stuffs")
                 self.teamLogo.image = UIImage(data: data!)
             }
         }
@@ -49,16 +50,17 @@ class ViewTeamViewController: UIViewController, UITableViewDelegate, UITableView
         let db = Firestore.firestore()
         
         let leagueId = team.currentLeague
-        db.collection("players")//("league_players").whereField("currentLeague", isEqualTo: leagueId)
+        print("League id: \(leagueId!)")
+        db.collection("league_players").whereField("currentLeague", isEqualTo: leagueId!)
             .whereField("teamId", isEqualTo: team.id)
-            //.order(by: "name")
+            .order(by: "name")
             .addSnapshotListener {querySnapshot, error in
                 guard let snapshots = querySnapshot?.documents else {
                     print("Error: \(error.debugDescription)")
                     return
                 }
                 
-                print("Snapshot has \(querySnapshot?.count) players")
+                print("Snapshot has \(querySnapshot!.count) players")
                 
                 self.players = []
                 

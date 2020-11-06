@@ -33,10 +33,10 @@ class MatchStatCell: UITableViewCell {
                 
                 switch (stat.eventType) {
                 case "yellow":
-                    homeEvent.image = UIImage(named: "soccer_ball")
+                    homeEvent.image = UIImage(named: "yellow_card")
                     break
                 case "red":
-                    homeEvent.image = UIImage(named: "red")
+                    homeEvent.image = UIImage(named: "red_card")
                     break
                 case "goal":
                     homeEvent.image = UIImage(named: "soccer_ball")
@@ -49,10 +49,10 @@ class MatchStatCell: UITableViewCell {
                 
                 switch (stat.eventType) {
                 case "yellow":
-                    awayEvent.image = UIImage(named: "soccer_ball")
+                    awayEvent.image = UIImage(named: "yellow_card")
                     break
                 case "red":
-                    awayEvent.image = UIImage(named: "red")
+                    awayEvent.image = UIImage(named: "red_card")
                     break
                 case "goal":
                     awayEvent.image = UIImage(named: "soccer_ball")

@@ -14,9 +14,9 @@ class Player {
     var currentLeague: String?
     var imageUrl: String = ""
     var teamName: String?
-    var goals: Int?
-    var yellows: Int?
-    var reds: Int?
+    var goals: Int = 0
+    var yellows: Int = 0
+    var reds: Int = 0
     
     init() {
         

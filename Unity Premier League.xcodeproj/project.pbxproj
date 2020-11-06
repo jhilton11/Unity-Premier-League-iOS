@@ -32,6 +32,7 @@
 		1884F53B252F41890091B552 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884F53A252F41890091B552 /* Player.swift */; };
 		1884F53D252F53490091B552 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884F53C252F53490091B552 /* News.swift */; };
 		1886A23A253073FF00F4E2B5 /* ViewNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886A239253073FE00F4E2B5 /* ViewNewsViewController.swift */; };
+		18D9E1D02555459D00CC91BB /* PlayerStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E1CF2555459D00CC91BB /* PlayerStatCell.swift */; };
 		4EBA5960EE34075D91FED0D1 /* Pods_Unity_Premier_LeagueUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D900111C46C129A81CBA9E61 /* Pods_Unity_Premier_LeagueUITests.framework */; };
 		4F9B34B06817A840B917D387 /* Pods_Unity_Premier_LeagueTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF0836CC3E3B9C01DC45A224 /* Pods_Unity_Premier_LeagueTests.framework */; };
 /* End PBXBuildFile section */
@@ -84,6 +85,7 @@
 		1884F53A252F41890091B552 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		1884F53C252F53490091B552 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		1886A239253073FE00F4E2B5 /* ViewNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNewsViewController.swift; sourceTree = "<group>"; };
+		18D9E1CF2555459D00CC91BB /* PlayerStatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatCell.swift; sourceTree = "<group>"; };
 		7EE37F3B9EDABAB712E3272A /* Pods-Unity Premier LeagueUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier LeagueUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier LeagueUITests/Pods-Unity Premier LeagueUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9916D4F64D588A40052E8831 /* Pods-Unity Premier LeagueUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier LeagueUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier LeagueUITests/Pods-Unity Premier LeagueUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AF0836CC3E3B9C01DC45A224 /* Pods_Unity_Premier_LeagueTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unity_Premier_LeagueTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +173,7 @@
 				1873E9C725397DEE001F891C /* ViewMatchViewController.swift */,
 				1873E9C92539875D001F891C /* MatchStat.swift */,
 				1873E9CB2539A3D6001F891C /* MatchStatCell.swift */,
+				18D9E1CF2555459D00CC91BB /* PlayerStatCell.swift */,
 			);
 			path = "Unity Premier League";
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				1873E9C825397DEE001F891C /* ViewMatchViewController.swift in Sources */,
 				1873E9C425387283001F891C /* FixturesCell.swift in Sources */,
 				1825E94B252C6FB300FC2AFF /* NewsCell.swift in Sources */,
+				18D9E1D02555459D00CC91BB /* PlayerStatCell.swift in Sources */,
 				1873E9C625387770001F891C /* Fixture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
