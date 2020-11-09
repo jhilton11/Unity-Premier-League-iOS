@@ -22,6 +22,8 @@
 		1825E94D252C81CB00FC2AFF /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1825E94C252C81CB00FC2AFF /* Team.swift */; };
 		1839F5ED252DAF7D006DA590 /* FixturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839F5EC252DAF7D006DA590 /* FixturesViewController.swift */; };
 		1839F5EF252DB69C006DA590 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839F5EE252DB69C006DA590 /* StatsViewController.swift */; };
+		18727FB4255933270027F40C /* LeagueTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18727FB3255933270027F40C /* LeagueTableCell.swift */; };
+		18727FB625594CEE0027F40C /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18727FB525594CEE0027F40C /* Util.swift */; };
 		1873E9C425387283001F891C /* FixturesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873E9C325387283001F891C /* FixturesCell.swift */; };
 		1873E9C625387770001F891C /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873E9C525387770001F891C /* Fixture.swift */; };
 		1873E9C825397DEE001F891C /* ViewMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873E9C725397DEE001F891C /* ViewMatchViewController.swift */; };
@@ -33,6 +35,7 @@
 		1884F53D252F53490091B552 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884F53C252F53490091B552 /* News.swift */; };
 		1886A23A253073FF00F4E2B5 /* ViewNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886A239253073FE00F4E2B5 /* ViewNewsViewController.swift */; };
 		18D9E1D02555459D00CC91BB /* PlayerStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E1CF2555459D00CC91BB /* PlayerStatCell.swift */; };
+		18E9DD4F255923F1004DCCFA /* LeagueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E9DD4E255923F1004DCCFA /* LeagueTableViewController.swift */; };
 		4EBA5960EE34075D91FED0D1 /* Pods_Unity_Premier_LeagueUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D900111C46C129A81CBA9E61 /* Pods_Unity_Premier_LeagueUITests.framework */; };
 		4F9B34B06817A840B917D387 /* Pods_Unity_Premier_LeagueTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF0836CC3E3B9C01DC45A224 /* Pods_Unity_Premier_LeagueTests.framework */; };
 /* End PBXBuildFile section */
@@ -75,6 +78,8 @@
 		1825E94C252C81CB00FC2AFF /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		1839F5EC252DAF7D006DA590 /* FixturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesViewController.swift; sourceTree = "<group>"; };
 		1839F5EE252DB69C006DA590 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		18727FB3255933270027F40C /* LeagueTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTableCell.swift; sourceTree = "<group>"; };
+		18727FB525594CEE0027F40C /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1873E9C325387283001F891C /* FixturesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesCell.swift; sourceTree = "<group>"; };
 		1873E9C525387770001F891C /* Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixture.swift; sourceTree = "<group>"; };
 		1873E9C725397DEE001F891C /* ViewMatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMatchViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +91,7 @@
 		1884F53C252F53490091B552 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		1886A239253073FE00F4E2B5 /* ViewNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNewsViewController.swift; sourceTree = "<group>"; };
 		18D9E1CF2555459D00CC91BB /* PlayerStatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatCell.swift; sourceTree = "<group>"; };
+		18E9DD4E255923F1004DCCFA /* LeagueTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTableViewController.swift; sourceTree = "<group>"; };
 		7EE37F3B9EDABAB712E3272A /* Pods-Unity Premier LeagueUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier LeagueUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier LeagueUITests/Pods-Unity Premier LeagueUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9916D4F64D588A40052E8831 /* Pods-Unity Premier LeagueUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier LeagueUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier LeagueUITests/Pods-Unity Premier LeagueUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AF0836CC3E3B9C01DC45A224 /* Pods_Unity_Premier_LeagueTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unity_Premier_LeagueTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +180,9 @@
 				1873E9C92539875D001F891C /* MatchStat.swift */,
 				1873E9CB2539A3D6001F891C /* MatchStatCell.swift */,
 				18D9E1CF2555459D00CC91BB /* PlayerStatCell.swift */,
+				18E9DD4E255923F1004DCCFA /* LeagueTableViewController.swift */,
+				18727FB3255933270027F40C /* LeagueTableCell.swift */,
+				18727FB525594CEE0027F40C /* Util.swift */,
 			);
 			path = "Unity Premier League";
 			sourceTree = "<group>";
@@ -452,14 +461,17 @@
 				1825E94D252C81CB00FC2AFF /* Team.swift in Sources */,
 				1884F537252F1B1D0091B552 /* ViewTeamViewController.swift in Sources */,
 				1873E9CC2539A3D6001F891C /* MatchStatCell.swift in Sources */,
+				18E9DD4F255923F1004DCCFA /* LeagueTableViewController.swift in Sources */,
 				1839F5EF252DB69C006DA590 /* StatsViewController.swift in Sources */,
 				1873E9CA2539875D001F891C /* MatchStat.swift in Sources */,
 				1884F53B252F41890091B552 /* Player.swift in Sources */,
 				1825E913252C415D00FC2AFF /* TeamsViewController.swift in Sources */,
 				1886A23A253073FF00F4E2B5 /* ViewNewsViewController.swift in Sources */,
 				1825E949252C6F8400FC2AFF /* TeamCell.swift in Sources */,
+				18727FB625594CEE0027F40C /* Util.swift in Sources */,
 				1825E90F252C415D00FC2AFF /* AppDelegate.swift in Sources */,
 				1825E911252C415D00FC2AFF /* NewsViewController.swift in Sources */,
+				18727FB4255933270027F40C /* LeagueTableCell.swift in Sources */,
 				1884F539252F2F0D0091B552 /* PlayerViewController.swift in Sources */,
 				1884F53D252F53490091B552 /* News.swift in Sources */,
 				1873E9C825397DEE001F891C /* ViewMatchViewController.swift in Sources */,

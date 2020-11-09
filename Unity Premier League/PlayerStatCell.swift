@@ -26,24 +26,9 @@ class PlayerStatCell: UITableViewCell {
     }
     
     func loadPlayerStat(player: Player) {
-        loadImage(view: playerImage, imageUrl: player.imageUrl)
+        Util.loadImage(view: playerImage, imageUrl: player.imageUrl)
         playerName.text = "\(player.name) (\(player.teamName ?? ""))"
         playerGoals.text = "\(player.goals)"
-    }
-    
-    func loadImage(view: UIImageView, imageUrl: String) {
-        DispatchQueue.global().async {
-            let url = URL(string: imageUrl)
-            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-            
-            DispatchQueue.main.async {
-                //print("Main thread stuffs")
-                view.image = UIImage(data: data!)
-                
-                //self.setNeedsLayout() //invalidate current layout
-                //self.layoutIfNeeded() //update immediately
-            }
-        }
     }
 
 }

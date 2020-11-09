@@ -32,8 +32,8 @@ class ViewMatchViewController: UIViewController, UITableViewDelegate, UITableVie
             awayTeam.text = m.awayTeam
             scoresLabel.text = "\(m.homeScore) - \(m.awayScore)"
             
-            loadImage(view: homeLogo, imageUrl: m.homeTeamImgUrl)
-            loadImage(view: awayLogo, imageUrl: m.awayTeamImgUrl)
+            Util.loadImage(view: homeLogo, imageUrl: m.homeTeamImgUrl)
+            Util.loadImage(view: awayLogo, imageUrl: m.awayTeamImgUrl)
             loadStats(matchId: m.id)
         }
     }

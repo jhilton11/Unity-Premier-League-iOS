@@ -25,6 +25,7 @@ class Team {
     var ga: Int = 0
     var gd: Int = 0
     var points: Int = 0
+    var deducted: Int = 0
     var leagueTeamId: String?
     
     init() {

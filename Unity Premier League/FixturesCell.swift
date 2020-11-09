@@ -44,15 +44,14 @@ class FixturesCell: UITableViewCell {
     func loadImage(view: UIImageView, imageUrl: String) {
         DispatchQueue.global().async {
             let url = URL(string: imageUrl)
-            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            if let data = try? Data(contentsOf: url!) {
+                DispatchQueue.main.async {
+                    view.image = UIImage(data: data)
+                }
+            } else {
+                print("Unable to load image probably due to network")
+            } //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
             
-            DispatchQueue.main.async {
-                print("Main thread stuffs")
-                view.image = UIImage(data: data!)
-                
-                //self.setNeedsLayout() //invalidate current layout
-                //self.layoutIfNeeded() //update immediately
-            }
         }
     }
 }

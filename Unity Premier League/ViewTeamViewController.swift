@@ -38,14 +38,7 @@ class ViewTeamViewController: UIViewController, UITableViewDelegate, UITableView
     
     func loadData(team: Team) {
         teamName.text = team.name
-        DispatchQueue.global().async {
-            let url = URL(string: (self.team?.imageUrl)!)
-            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-            DispatchQueue.main.async {
-                //print("Main thread stuffs")
-                self.teamLogo.image = UIImage(data: data!)
-            }
-        }
+        Util.loadImage(view: teamLogo, imageUrl: team.imageUrl)
         
         let db = Firestore.firestore()
         
@@ -89,18 +82,7 @@ class ViewTeamViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell")
         cell?.textLabel?.text = player.name
         
-        DispatchQueue.global().async {
-            let url = URL(string: player.imageUrl)
-            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-            
-            DispatchQueue.main.async {
-                print("Main thread stuffs")
-                cell?.imageView!.image = UIImage(data: data!)
-                
-                cell?.setNeedsLayout() //invalidate current layout
-                cell?.layoutIfNeeded() //update immediately
-            }
-        }
+        Util.loadImage(view: ((cell?.imageView)!), imageUrl: (team?.imageUrl)!)
         
         return cell!
     }

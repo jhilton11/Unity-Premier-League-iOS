@@ -88,21 +88,7 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let team = teams[indexPath.row]
         cell.textLabel?.text = team.name
         
-        //let url = URL(string: team.imageUrl)
-        //let data = try? Data(contentsOf: url!)
-        //cell.imageView?.image = UIImage(data: data!)
-        DispatchQueue.global().async {
-            let url = URL(string: team.imageUrl)
-            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-            
-            DispatchQueue.main.async {
-                print("Main thread stuffs")
-                cell.imageView!.image = UIImage(data: data!)
-
-                cell.setNeedsLayout() //invalidate current layout
-                cell.layoutIfNeeded() //update immediately
-            }
-        }
+        Util.loadImage(view: cell.imageView!, imageUrl: team.imageUrl)
         
         return cell;
     }
