@@ -20,7 +20,7 @@ class Fixture {
     var awayTeam: String = ""
     var leagueId: String = ""
     var referee: String?
-    var status: String = "not played"
+    var status: String?
     var report: String?
     var venue: String?
     var cellNo: Int?

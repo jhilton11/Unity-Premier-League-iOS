@@ -61,7 +61,7 @@ class FixturesViewController: UIViewController, UITableViewDelegate, UITableView
                     return
                 }
                 
-                print("There are \(querySnapshot?.count) matches in \(leagueId)")
+                print("There are \(querySnapshot!.count) matches in \(leagueId)")
                 
                 self.fixtures = []
                 var matno: Int = 0;
@@ -78,11 +78,13 @@ class FixturesViewController: UIViewController, UITableViewDelegate, UITableView
                     let leagueId = document.data()["leagueId"] as! String
                     let homeScore = document.data()["homeScore"] as! Int
                     let awayScore = document.data()["awayScore"] as! Int
+                    let status = document.data()["status"] as! String
                     
                     let match = Fixture(id: id, homeTeam: homeTeam, homeTeamId: homeTeamId, homeTeamImgUrl: homeTeamUrl, awayTeam: awayTeam, awayTeamId: awayTeamId, awayTeamImgUrl: awayTeamUrl, leagueId: leagueId)
                     match.homeScore = homeScore
                     match.awayScore = awayScore
                     match.cellNo = matno
+                    match.status = status
                     
                     self.fixtures.append(match);
                 }

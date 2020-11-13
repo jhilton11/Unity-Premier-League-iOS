@@ -42,16 +42,15 @@ class LeagueTableCell: UITableViewCell {
         print("Loading position 0")
     }
     
-    func loadTeam(p: Int) {
-        print("Loading position \(p)")
+    func loadTeam(p: Int, team: Team) {
         pos.text = "\(p)"
-        teams.text = "Barnet"
-        played.text = "5"
-        wins.text = "4"
-        draws.text = "1"
-        lost.text = "0"
-        goalDif.text = "23"
-        points.text = "13"
+        teams.text = team.name
+        played.text = "\(team.played)"
+        wins.text = "\(team.win)"
+        draws.text = "\(team.draws)"
+        lost.text = "\(team.losses)"
+        goalDif.text = "\(team.gd)"
+        points.text = "\(team.points)"
     }
 
 }

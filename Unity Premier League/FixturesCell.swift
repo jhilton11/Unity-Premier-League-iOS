@@ -35,23 +35,17 @@ class FixturesCell: UITableViewCell {
         
         homeTeam.text = match.homeTeam
         awayTeam.text = match.awayTeam
-        scoreLabel.text = "\(match.homeScore) - \(match.awayScore)"
         
-        loadImage(view: homeLogo, imageUrl: match.homeTeamImgUrl)
-        loadImage(view: awayLogo, imageUrl: match.awayTeamImgUrl)
-    }
-    
-    func loadImage(view: UIImageView, imageUrl: String) {
-        DispatchQueue.global().async {
-            let url = URL(string: imageUrl)
-            if let data = try? Data(contentsOf: url!) {
-                DispatchQueue.main.async {
-                    view.image = UIImage(data: data)
-                }
-            } else {
-                print("Unable to load image probably due to network")
-            } //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-            
+        if (match.status == "played") {
+            scoreLabel.text = "\(match.homeScore) - \(match.awayScore)"
+        } else if (match.status == "not played") {
+            scoreLabel.text = "? - ?"
+        } else {
+            scoreLabel.text = "P - P"
         }
+        
+        Util.loadImage(view: homeLogo, imageUrl: match.homeTeamImgUrl)
+        Util.loadImage(view: awayLogo, imageUrl: match.awayTeamImgUrl)
     }
+
 }

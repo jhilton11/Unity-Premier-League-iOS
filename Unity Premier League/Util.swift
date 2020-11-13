@@ -18,7 +18,7 @@ class Util {
                 }
             } else {
                 print("Unable to load image probably due to network")
-            } //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            }
             
         }
     }

@@ -60,7 +60,7 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     return
                 }
                 
-                print("There are \(querySnapshot?.count) teams in \(leagueId)")
+                print("There are \(querySnapshot!.count) teams in \(leagueId)")
                 
                 self.teams = []
                 
