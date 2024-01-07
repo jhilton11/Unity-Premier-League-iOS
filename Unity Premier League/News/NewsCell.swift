@@ -9,6 +9,8 @@
 import UIKit
 
 class NewsCell: UITableViewCell {
+    
+    static let identifier = "news-cell"
 
     override func awakeFromNib() {
         super.awakeFromNib()
