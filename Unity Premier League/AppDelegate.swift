@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         let window = UIWindow(frame: UIScreen.main.bounds)
-            window.rootViewController = NewsViewController() // Your initial view controller.
+            window.rootViewController = TabController() // Your initial view controller.
             window.makeKeyAndVisible()
             self.window = window
             return true

@@ -19,9 +19,10 @@ class News {
         
     }
     
-    init(_ id: String, _ title: String, _ imageUrl: String) {
+    init(id: String, title: String, imageUrl: String, body: String) {
         self.id = id
         self.title = title
         self.imageUrl = imageUrl
+        self.body = body
     }
 }

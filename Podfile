@@ -10,6 +10,7 @@ target 'Unity Premier League' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Messaging'
+  pod 'iOSDropDown'
 
   target 'Unity Premier LeagueTests' do
     inherit! :search_paths

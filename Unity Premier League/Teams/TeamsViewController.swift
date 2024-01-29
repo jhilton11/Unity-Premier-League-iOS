@@ -9,18 +9,42 @@
 import UIKit
 import Firebase
 
-class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
+class TeamsViewController: UIViewController {
     var teams: [Team] = []
     var leagues: [String] = []
+    
+    lazy var width: CGFloat = {
+        let width = (view.bounds.width/3)-10
+        print("cell width is \(width)")
+        return width
+    }()
 
-    @IBOutlet weak var playersTable: UITableView!
-    @IBOutlet weak var leaguePicker: UIPickerView!
+    lazy var teamsTable: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let table = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.register(TeamCell.self, forCellWithReuseIdentifier: TeamCell.identifier)
+        table.delegate = self
+        table.dataSource = self
+        return table
+    }()
+    
+    lazy var leaguePicker = Picker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Teams"
         loadLeagues()
+        view.backgroundColor = .white
+        setConstraints()
+        
+        leaguePicker.didSelect {  [weak self]
+            selectedText, index, id in
+            self?.loadTeams(id: self!.leagues[index])
+            print("Selected \(selectedText)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,24 +52,48 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Dispose of any resources that can be recreated.
     }
     
-    func loadLeagues() ->Void {
+    private func setConstraints() {
+        view.addSubview(leaguePicker)
+        view.addSubview(teamsTable)
+        
+        NSLayoutConstraint.activate([
+            leaguePicker.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            leaguePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            leaguePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            leaguePicker.heightAnchor.constraint(equalToConstant: 50),
+            
+            teamsTable.topAnchor.constraint(equalTo: leaguePicker.bottomAnchor, constant: 0),
+            teamsTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            teamsTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            teamsTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
+    }
+    
+    private func loadLeagues() ->Void {
         let db = Firestore.firestore()
         
         db.collection("leagues")
-            .addSnapshotListener {querySnapshot, error in
+            .order(by: "number", descending: true)
+            .addSnapshotListener { [weak self]
+                querySnapshot, error in
                 guard let snapshots = querySnapshot?.documents else {
                     return
                 }
-                self.leagues = []
+                
+                self?.leagues = []
                 
                 for document in snapshots {
                     let id = document.data()["id"] as! String
                     
-                    self.leagues.append(id)
+                    self?.leagues.append(id)
                     print(id)
                 }
-                self.leaguePicker.reloadAllComponents()
-                self.loadTeams(id: self.leagues[0])
+                self?.leaguePicker.optionArray = self!.leagues
+                
+                if !self!.leagues.isEmpty {
+                    self?.leaguePicker.text = self?.leagues[0] ?? ""
+                    self?.loadTeams(id: self!.leagues[0])
+                }
         }
     }
     
@@ -54,7 +102,7 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let leagueId = id
         db.collection("league_teams").whereField("currentLeague", isEqualTo: leagueId)
-            //.order(by: "name")
+            .order(by: "name")
             .addSnapshotListener {querySnapshot, error in
                 guard let snapshots = querySnapshot?.documents else {
                     return
@@ -75,55 +123,35 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     self.teams.append(team);
                 }
                 
-                self.playersTable.reloadData()
+                self.teamsTable.reloadData()
         }
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+}
+
+extension TeamsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return teams.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TeamCell.identifier, for: indexPath) as! TeamCell
         let team = teams[indexPath.row]
-        cell.textLabel?.text = team.name
-        
-        Util.loadImage(view: cell.imageView!, imageUrl: team.imageUrl)
-        
-        return cell;
+        cell.configure(with: team)
+        return cell
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        print("Row: \(indexPath.row) and Section: \(indexPath.section) selected")
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = ViewTeamViewController()
+        vc.team = teams[indexPath.row]
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: width, height: width)
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return leagues.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let id = leagues[row]
-        return id;
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        loadTeams(id: leagues[row])
-        print("Selected \(leagues[row])")
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "teamDetail" {
-            if let indexPath = self.playersTable.indexPathForSelectedRow {
-                let vc = segue.destination as! ViewTeamViewController
-                vc.team = teams[indexPath.row]
-                vc.hidesBottomBarWhenPushed = true
-            }
-        }
-    }
-
 }
 

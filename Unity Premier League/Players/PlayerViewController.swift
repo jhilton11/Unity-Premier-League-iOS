@@ -11,47 +11,47 @@ import UIKit
 class PlayerViewController: UIViewController {
     var player: Player?
 
-    @IBOutlet weak var playerImage: UIImageView!
-    @IBOutlet weak var playerName: UILabel!
-    @IBOutlet weak var teamName: UILabel!
+    lazy var playerImage = ImageView(frame: .zero)
+    
+    lazy var teamNameLbl: Label = {
+        let label = Label(frame: .zero)
+        label.font = .boldSystemFont(ofSize: 16)
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.backgroundColor = .white
+        setConstraints()
+        
         if let p = player {
             self.title = p.name;
-            playerName.text = p.name
-            teamName.text = p.teamName
+            teamNameLbl.text = p.teamName
             
-            DispatchQueue.global().async {
-                let url = URL(string: p.imageUrl)
-                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                
-                DispatchQueue.main.async {
-                    print("Main thread stuffs")
-                    self.playerImage.image = UIImage(data: data!)
-                    
-                    self.playerImage.setNeedsLayout() //invalidate current layout
-                    self.playerImage.layoutIfNeeded() //update immediately
-                }
-            }
+            playerImage.loadImage(imageUrl: player!.imageUrl)
         }
+    }
+    
+    private func setConstraints() {
+        view.addSubview(playerImage)
+        view.addSubview(teamNameLbl)
+        
+        NSLayoutConstraint.activate([
+            playerImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            playerImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            playerImage.widthAnchor.constraint(equalToConstant: 200),
+            playerImage.heightAnchor.constraint(equalToConstant: 200),
+            
+            teamNameLbl.topAnchor.constraint(equalTo: playerImage.bottomAnchor, constant: 10),
+            teamNameLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        ])
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -10,14 +10,12 @@ import UIKit
 import Firebase
 
 class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    let identifier = "news-cell"
 
     var newsArray: [News] = []
     lazy var newsTable: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
+        table.register(NewsCell.self, forCellReuseIdentifier: NewsCell.identifier)
         table.delegate = self
         table.dataSource = self
         table.separatorStyle = .none
@@ -29,6 +27,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         view.backgroundColor = .white
+        title = "News"
         setConstraints()
     }
     
@@ -41,8 +40,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         NSLayoutConstraint.activate([
             newsTable.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            newsTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            newsTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            newsTable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            newsTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             newsTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
@@ -63,7 +62,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     return
                 }
                 
-                print("News collection has \(querySnapshot?.count) news items")
+                //print("News collection has \(querySnapshot?.count) news items")
                 
                 self.newsArray = []
                 
@@ -71,8 +70,9 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     let id = document.data()["id"] as! String
                     let name = document.data()["title"] as! String
                     let imageUrl = document.data()["imgUrl"] as? String ?? ""
+                    let body = document.data()["body"] as? String ?? ""
                     
-                    let news = News(id, name, imageUrl)
+                    let news = News(id: id, title: name, imageUrl: imageUrl, body: body)
                     print(news)
                     self.newsArray.append(news);
                 }
@@ -91,10 +91,9 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell.identifier, for: indexPath) as! NewsCell
         let news = newsArray[indexPath.row]
-        cell.imageView?.loadImage(imageUrl: news.imageUrl)
-        cell.textLabel?.text = news.title
+        cell.configure(with: news)
         return cell
     }
     
@@ -103,6 +102,10 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let vc = ViewNewsViewController()
         vc.news = newsArray[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

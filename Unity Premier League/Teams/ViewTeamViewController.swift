@@ -9,21 +9,46 @@
 import UIKit
 import Firebase
 
-class ViewTeamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewTeamViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var team: Team?
     var players: [Player] = []
+    
+    lazy var width: CGFloat = {
+        let width = (view.bounds.width/3)-10
+        print("cell width is \(width)")
+        return width
+    }()
 
-    @IBOutlet weak var teamName: UILabel!
-    @IBOutlet weak var teamLogo: UIImageView!
-    @IBOutlet weak var playerTable: UITableView!
+    lazy var teamLogo = ImageView(frame: .zero)
+    
+    lazy var registeredPlayersLbl: Label = {
+        let label = Label(frame: .zero)
+        label.font = .boldSystemFont(ofSize: 18)
+        return label
+    }()
+    
+    lazy var playerTable: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let table = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.register(TeamCell.self, forCellWithReuseIdentifier: TeamCell.identifier)
+        table.delegate = self
+        table.dataSource = self
+        return table
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .white
+        setConstraints()
 
         // Do any additional setup after loading the view.
         if let myTeam = team {
             self.title = "\(myTeam.name)"
+            teamLogo.loadImage(imageUrl: myTeam.imageUrl)
             print("\(myTeam.name)")
             loadData(team: myTeam)
         } else {
@@ -37,9 +62,6 @@ class ViewTeamViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func loadData(team: Team) {
-        teamName.text = team.name
-        Util.loadImage(view: teamLogo, imageUrl: team.imageUrl)
-        
         let db = Firestore.firestore()
         
         let leagueId = team.currentLeague
@@ -69,37 +91,54 @@ class ViewTeamViewController: UIViewController, UITableViewDelegate, UITableView
                     self.players.append(player);
                 }
                 
+                let num = self.players.count 
+                self.registeredPlayersLbl.text = "Registered players: \(num)"
+                
                 self.playerTable.reloadData()
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    private func setConstraints() {
+        view.addSubview(teamLogo)
+        view.addSubview(registeredPlayersLbl)
+        view.addSubview(playerTable)
+        
+        NSLayoutConstraint.activate([
+            teamLogo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            teamLogo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            teamLogo.widthAnchor.constraint(equalToConstant: 180),
+            teamLogo.heightAnchor.constraint(equalToConstant: 180),
+            
+            registeredPlayersLbl.topAnchor.constraint(equalTo: teamLogo.bottomAnchor, constant: 10),
+            registeredPlayersLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            playerTable.topAnchor.constraint(equalTo: registeredPlayersLbl.bottomAnchor, constant: 10),
+            playerTable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            playerTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            playerTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return players.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TeamCell.identifier, for: indexPath) as! TeamCell
         let player = players[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell")
-        cell?.textLabel?.text = player.name
-        
-        Util.loadImage(view: ((cell?.imageView)!), imageUrl: (team?.imageUrl)!)
-        
-        return cell!
+        cell.configure(with: player)
+        return cell
     }
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        if segue.identifier == "playerDetail" {
-            if let indexPath = self.playerTable.indexPathForSelectedRow {
-                let vc = segue.destination as! PlayerViewController
-                vc.player = players[indexPath.row]
-                vc.hidesBottomBarWhenPushed = true
-            }
-        }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = PlayerViewController()
+        vc.player = players[indexPath.row]
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: width, height: width)
     }
     
 
