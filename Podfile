@@ -6,11 +6,8 @@ target 'Unity Premier League' do
   use_frameworks!
 
   # Pods for Unity Premier League
-  pod 'Firebase/Firestore'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Storage'
-  pod 'Firebase/Messaging'
   pod 'iOSDropDown'
+  pod 'SnapKit', '~> 5.7.0'
 
   target 'Unity Premier LeagueTests' do
     inherit! :search_paths

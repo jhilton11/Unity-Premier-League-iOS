@@ -15,7 +15,21 @@ class PlayerViewController: UIViewController {
     
     lazy var teamNameLbl: Label = {
         let label = Label(frame: .zero)
-        label.font = .boldSystemFont(ofSize: 16)
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
+        return label
+    }()
+    
+    lazy var statsLabel: Label = {
+        let label = Label()
+        label.text = "Player Stats"
+        label.font = UIFont.preferredFont(forTextStyle: .title2)
+        return label
+    }()
+    
+    lazy var goalsLabel: Label = {
+        let label = Label()
+        label.text = "(0)"
+        //label.addTrailing(image: UIImage(named: "soccer_ball")!)
         return label
     }()
     
@@ -28,7 +42,7 @@ class PlayerViewController: UIViewController {
         
         if let p = player {
             self.title = p.name;
-            teamNameLbl.text = p.teamName
+            teamNameLbl.text = p.teamName?.capitalized
             
             playerImage.loadImage(imageUrl: player!.imageUrl)
         }
@@ -37,16 +51,29 @@ class PlayerViewController: UIViewController {
     private func setConstraints() {
         view.addSubview(playerImage)
         view.addSubview(teamNameLbl)
+        view.addSubview(statsLabel)
+        view.addSubview(goalsLabel)
         
-        NSLayoutConstraint.activate([
-            playerImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            playerImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            playerImage.widthAnchor.constraint(equalToConstant: 200),
-            playerImage.heightAnchor.constraint(equalToConstant: 200),
-            
-            teamNameLbl.topAnchor.constraint(equalTo: playerImage.bottomAnchor, constant: 10),
-            teamNameLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        ])
+        playerImage.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(200)
+        }
+        
+        teamNameLbl.snp.makeConstraints { make in
+            make.top.equalTo(playerImage.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        statsLabel.snp.makeConstraints { make in
+            make.top.equalTo(teamNameLbl.snp.bottom).offset(25)
+            make.centerX.equalToSuperview()
+        }
+        
+        goalsLabel.snp.makeConstraints { make in
+            make.top.equalTo(statsLabel.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
     }
 
     override func didReceiveMemoryWarning() {

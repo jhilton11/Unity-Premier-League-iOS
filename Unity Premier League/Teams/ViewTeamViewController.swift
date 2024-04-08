@@ -16,7 +16,7 @@ class ViewTeamViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     lazy var width: CGFloat = {
         let width = (view.bounds.width/3)-10
-        print("cell width is \(width)")
+//        print("cell width is \(width)")
         return width
     }()
 
@@ -51,6 +51,7 @@ class ViewTeamViewController: UIViewController, UICollectionViewDelegate, UIColl
             teamLogo.loadImage(imageUrl: myTeam.imageUrl)
             print("\(myTeam.name)")
             loadData(team: myTeam)
+            
         } else {
             self.title = "Players"
         }
@@ -138,7 +139,7 @@ class ViewTeamViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: width, height: width)
+        return CGSize(width: width, height: width*1.2)
     }
     
 

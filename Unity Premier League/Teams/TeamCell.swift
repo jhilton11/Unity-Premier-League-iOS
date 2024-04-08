@@ -29,6 +29,8 @@ class TeamCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         width = frame.width - 30
+        layer.shadowColor = UIColor.gray.cgColor
+        layer.shadowRadius = 10.0
         setConstraints()
     }
     
@@ -38,12 +40,12 @@ class TeamCell: UICollectionViewCell {
     
     func configure(with team: Team) {
         teamImage.loadImage(imageUrl: team.imageUrl)
-        nameLbl.text = team.name.capitalized
+        nameLbl.text = team.name
     }
     
     func configure(with player: Player) {
         teamImage.loadImage(imageUrl: player.imageUrl)
-        nameLbl.text = player.name
+        nameLbl.text = player.name.capitalized
     }
     
     private func setConstraints() {

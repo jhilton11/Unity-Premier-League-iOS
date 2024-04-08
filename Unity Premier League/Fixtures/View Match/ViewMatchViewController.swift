@@ -13,7 +13,11 @@ class ViewMatchViewController: UIViewController {
     var match: Fixture?
     var stats: [MatchStat] = []
     
-    @IBOutlet weak var statsTable: UITableView!
+    lazy var backgroundImage: ImageView = {
+        let imgView = ImageView(frame: .zero)
+        imgView.image = UIImage(named: "fixtures_background_1")
+        return imgView
+    }()
     
     lazy var leagueSeason: Label = {
         let label = Label()
@@ -40,33 +44,48 @@ class ViewMatchViewController: UIViewController {
     
     lazy var homeTeamLabel: Label = {
         let label = Label()
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
         return label
     }()
     
     lazy var awayTeamLabel: Label = {
         let label = Label()
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
         return label
     }()
     
     lazy var venueLabel: Label = {
         let label = Label()
+        label.font = UIFont.preferredFont(forTextStyle: .title2)
         return label
     }()
     
     lazy var refereeLabel: Label = {
         let label = Label()
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
         return label
     }()
     
     lazy var dateLabel: Label = {
         let label = Label()
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
         return label
     }()
     
     lazy var matchStatLabel: Label = {
         let label = Label()
         label.text = "Match Stats"
+        label.font = UIFont.preferredFont(forTextStyle: .title2)
         return label
+    }()
+    
+    lazy var statsTable: UITableView = {
+        let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.register(MatchStatCell.self, forCellReuseIdentifier: MatchStatCell.identifier)
+        table.delegate = self
+        table.dataSource = self
+        return table
     }()
     
     override func viewDidLoad() {
@@ -79,7 +98,7 @@ class ViewMatchViewController: UIViewController {
             awayTeamLabel.text = m.awayTeam
             scoresLabel.text = "\(m.homeScore) - \(m.awayScore)"
             venueLabel.text = m.venue
-            refereeLabel.text = m.referee
+            refereeLabel.text = "Referee: \(m.referee ?? "")"
             dateLabel.text = m.date?.formatDateToString() ?? ""
             homeLogo.loadImage(imageUrl: m.homeTeamImgUrl)
             awayLogo.loadImage(imageUrl: m.awayTeamImgUrl)
@@ -91,6 +110,7 @@ class ViewMatchViewController: UIViewController {
     }
     
     private func setConstraints() {
+//        view.addSubview(backgroundImage)
         view.addSubview(leagueSeason)
         view.addSubview(homeLogo)
         view.addSubview(awayLogo)
@@ -101,6 +121,12 @@ class ViewMatchViewController: UIViewController {
         view.addSubview(refereeLabel)
         view.addSubview(dateLabel)
         view.addSubview(matchStatLabel)
+        view.addSubview(statsTable)
+        
+//        backgroundImage.snp.makeConstraints { make in
+//            make.top.leading.trailing.equalToSuperview()
+//            make.bottom.equalTo(matchStatLabel.snp.top)
+//        }
         
         leagueSeason.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -150,8 +176,13 @@ class ViewMatchViewController: UIViewController {
         }
         
         matchStatLabel.snp.makeConstraints { make in
-            make.top.equalTo(dateLabel.snp.bottom).offset(10)
+            make.top.equalTo(dateLabel.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
+        }
+        
+        statsTable.snp.makeConstraints { make in
+            make.top.equalTo(matchStatLabel.snp.bottom).offset(10)
+            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
@@ -159,7 +190,7 @@ class ViewMatchViewController: UIViewController {
         let db = Firestore.firestore()
         
         db.collection("stats").whereField("matchId", isEqualTo: matchId)
-            //.order(by: "name")
+            .order(by: "minute", descending: false)
             .addSnapshotListener { [weak self]
                 querySnapshot, error in
                 guard let snapshots = querySnapshot?.documents else {
@@ -180,13 +211,15 @@ class ViewMatchViewController: UIViewController {
                     let leagueId = document.data()["leagueId"] as! String
                     let type = document.data()["type"] as! String
                     let isHome = document.data()["home"] as! Bool
+                    let minute = document.data()["minute"] as! String
                     
                     let stat = MatchStat(id: id, name: name, playerId: playerId, url: imageUrl, matchId: matchId, type: type, league: leagueId)
                     stat.isHome = isHome
+                    stat.minute = minute
                     self?.stats.append(stat)
                 }
                 
-//                self?.statsTable.reloadData()
+                self?.statsTable.reloadData()
         }
     }
 
@@ -198,7 +231,7 @@ extension ViewMatchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "matchStatsCell") as! MatchStatCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: MatchStatCell.identifier) as! MatchStatCell
         let row = indexPath.row
         cell.loadStat(stat: stats[row])
         return cell

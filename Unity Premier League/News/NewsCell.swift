@@ -14,11 +14,16 @@ class NewsCell: UITableViewCell {
     
     lazy var imageIcon = ImageView(frame: .zero)
     
-    lazy var titleLbl = Label(frame: .zero)
+    lazy var titleLbl: Label = {
+        let label = Label(frame: .zero)
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        return label
+    }()
     
     lazy var bodyLbl: Label = {
         let label = Label(frame: .zero)
-        
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        label.numberOfLines = 2
         return label
     }()
 
@@ -39,7 +44,7 @@ class NewsCell: UITableViewCell {
     func configure(with news: News) {
         imageIcon.loadImage(imageUrl: news.imageUrl)
         titleLbl.text = news.title
-        bodyLbl.attributedText = news.body?.htmlToAttributedString
+        bodyLbl.text = news.body?.parseHTMLString()
     }
     
     private func setConstraints() {
@@ -57,7 +62,7 @@ class NewsCell: UITableViewCell {
             titleLbl.leadingAnchor.constraint(equalTo: imageIcon.trailingAnchor, constant: 10),
             titleLbl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             
-            bodyLbl.topAnchor.constraint(equalTo: titleLbl.bottomAnchor),
+            bodyLbl.topAnchor.constraint(equalTo: titleLbl.bottomAnchor, constant: 0),
             bodyLbl.leadingAnchor.constraint(equalTo: titleLbl.leadingAnchor),
             bodyLbl.trailingAnchor.constraint(equalTo: titleLbl.trailingAnchor),
             bodyLbl.bottomAnchor.constraint(equalTo: imageIcon.bottomAnchor, constant: -5),

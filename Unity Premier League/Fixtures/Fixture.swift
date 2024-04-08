@@ -25,6 +25,7 @@ class Fixture {
     var venue: String?
     var cellNo: Int?
     var matchNo: Int?
+    var date: Date?
     
     init(id: String, homeTeam: String, homeTeamId: String, homeTeamImgUrl: String, awayTeam: String, awayTeamId: String, awayTeamImgUrl: String, leagueId: String) {
         self.id = id

@@ -9,10 +9,21 @@
 import UIKit
 import Firebase
 
-class LeagueTableViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
-
-    @IBOutlet weak var pickerView: UIPickerView!
-    @IBOutlet weak var leagueTable: UITableView!
+class LeagueTableViewController: UIViewController {
+    
+    var leagueNames: [String] = []
+    
+    lazy var leagueTable: UITableView = {
+        let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.register(LeagueTableCell.self, forCellReuseIdentifier: LeagueTableCell.identifier)
+        table.delegate = self
+        table.dataSource = self
+        return table
+    }()
+    
+    lazy var leaguePicker = Picker()
+    
     var leagues: [String] = []
     var teams: [Team] = []
     var header: Team = Team()
@@ -21,28 +32,66 @@ class LeagueTableViewController: UIViewController, UIPickerViewDelegate, UIPicke
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = "League Tables"
+        self.title = "League Table"
+        view.backgroundColor = .white
         loadLeagues()
+        setConstraints()
+        
+        leaguePicker.didSelect {  [weak self]
+            selectedText, index, id in
+            self?.loadLeagueTable(leagueId: self!.leagues[index])
+            print("Selected \(selectedText)")
+        }
+    }
+    
+    private func setConstraints() {
+        view.addSubview(leaguePicker)
+        view.addSubview(leagueTable)
+        
+        leaguePicker.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview().offset(-10)
+            make.height.equalTo(50)
+        }
+        
+        leagueTable.snp.makeConstraints { make in
+            make.top.equalTo(leaguePicker.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
     }
     
     func loadLeagues() {
         let db = Firestore.firestore()
         
         db.collection("leagues")
-            .addSnapshotListener {querySnapshot, error in
+            .order(by: "number", descending: true)
+            .addSnapshotListener { [weak self]
+                querySnapshot, error in
                 guard let snapshots = querySnapshot?.documents else {
                     return
                 }
-                self.leagues = []
+                
+                self?.leagues = []
+                self?.leagueNames = []
                 
                 for document in snapshots {
                     let id = document.data()["id"] as! String
                     
-                    self.leagues.append(id)
-                    print(id)
+                    if (id.contains("Unity")) {
+                        self?.leagues.append(id)
+                        let name = id.replacingOccurrences(of: "_", with: "/")
+                        self?.leagueNames.append(name)
+                        print(name)
+                    }
                 }
-                self.pickerView.reloadAllComponents()
-                self.loadLeagueTable(leagueId: self.leagues[0])
+                
+                self?.leaguePicker.optionArray = self!.leagueNames
+                
+                if !self!.leagues.isEmpty {
+                    self?.leaguePicker.text = self?.leagueNames[0] ?? ""
+                    self?.loadLeagueTable(leagueId: self!.leagues[0])
+                }
         }
     }
     
@@ -94,6 +143,7 @@ class LeagueTableViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 let t: Team = Team()
                 t.id = match.homeTeamId
                 t.name = match.homeTeam
+                t.imageUrl = match.homeTeamImgUrl
                 result.append(t)
             }
             
@@ -102,6 +152,7 @@ class LeagueTableViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 let t: Team = Team()
                 t.id = match.awayTeamId
                 t.name = match.awayTeam
+                t.imageUrl = match.awayTeamImgUrl
                 result.append(t)
             }
         }
@@ -162,46 +213,34 @@ class LeagueTableViewController: UIViewController, UIPickerViewDelegate, UIPicke
         return result
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return leagues.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        loadLeagueTable(leagueId: leagues[row])
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return leagues[row]
-    }
+}
+
+extension LeagueTableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return teams.count + 1
+        return teams.count == 0 ? 0 : teams.count+1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "leagueTable") as! LeagueTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: LeagueTableCell.identifier) as! LeagueTableCell
         if (indexPath.row == 0) {
             cell.loadHeader()
         } else {
-            let row = indexPath.row;
-            cell.loadTeam(p:row, team: teams[row-1])
+            let row = indexPath.row
+            cell.loadTeam(p: row, team: teams[row-1])
         }
         return cell
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let vc = ViewMatchViewController()
+//        vc.match = fixtures[indexPath.row]
+//        vc.hidesBottomBarWhenPushed = true
+//        navigationController?.pushViewController(vc, animated: true)
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
 }

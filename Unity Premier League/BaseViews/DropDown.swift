@@ -8,6 +8,7 @@
 
 import Foundation
 import iOSDropDown
+import UIKit
 
 class Picker: DropDown {
     
@@ -17,7 +18,7 @@ class Picker: DropDown {
         translatesAutoresizingMaskIntoConstraints = false
         checkMarkEnabled = false
         selectedRowColor = .clear
-        font = .systemFont(ofSize: 14)
+        font = UIFont.preferredFont(forTextStyle: .headline)
         textAlignment = .center
     }
     

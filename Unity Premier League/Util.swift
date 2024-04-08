@@ -9,17 +9,9 @@ import UIKit
 
 class Util {
     
-    static func loadImage(view: UIImageView, imageUrl: String) {
-        DispatchQueue.global().async {
-            let url = URL(string: imageUrl)
-            if let data = try? Data(contentsOf: url!) {
-                DispatchQueue.main.async {
-                    view.image = UIImage(data: data)
-                }
-            } else {
-                print("Unable to load image probably due to network")
-            }
-            
-        }
+    static func pushToNavigationController(navC: UINavigationController?, vc: UIViewController) {
+        navC?.modalPresentationStyle = .fullScreen
+        navC?.pushViewController(vc, animated: true)
     }
+    
 }

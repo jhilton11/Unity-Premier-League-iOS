@@ -12,10 +12,11 @@ import Firebase
 class TeamsViewController: UIViewController {
     var teams: [Team] = []
     var leagues: [String] = []
+    var leagueNames: [String] = []
     
     lazy var width: CGFloat = {
-        let width = (view.bounds.width/3)-10
-        print("cell width is \(width)")
+        let width = (view.bounds.width/4)-10
+//        print("cell width is \(width)")
         return width
     }()
 
@@ -58,8 +59,8 @@ class TeamsViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             leaguePicker.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            leaguePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            leaguePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            leaguePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            leaguePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             leaguePicker.heightAnchor.constraint(equalToConstant: 50),
             
             teamsTable.topAnchor.constraint(equalTo: leaguePicker.bottomAnchor, constant: 0),
@@ -81,17 +82,20 @@ class TeamsViewController: UIViewController {
                 }
                 
                 self?.leagues = []
+                self?.leagueNames = []
                 
                 for document in snapshots {
                     let id = document.data()["id"] as! String
                     
                     self?.leagues.append(id)
-                    print(id)
+                    let name = id.replacingOccurrences(of: "_", with: "/")
+                    self?.leagueNames.append(name)
+                    print(name)
                 }
-                self?.leaguePicker.optionArray = self!.leagues
+                self?.leaguePicker.optionArray = self!.leagueNames
                 
                 if !self!.leagues.isEmpty {
-                    self?.leaguePicker.text = self?.leagues[0] ?? ""
+                    self?.leaguePicker.text = self?.leagueNames[0] ?? ""
                     self?.loadTeams(id: self!.leagues[0])
                 }
         }
@@ -113,7 +117,7 @@ class TeamsViewController: UIViewController {
                 self.teams = []
                 
                 for document in snapshots {
-                    let id = document.data()["id"] as! String
+                    let id = document.data()["id"] as? String ?? ""
                     let name = document.data()["name"] as! String
                     let imageUrl = document.data()["imageUrl"] as! String
                     let leagueId = document.data()["currentLeague"] as! String
@@ -150,7 +154,7 @@ extension TeamsViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: width, height: width)
+        return CGSize(width: width, height: width * 1.2)
     }
     
 }

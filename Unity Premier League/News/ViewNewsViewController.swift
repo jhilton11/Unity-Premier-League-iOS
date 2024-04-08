@@ -14,14 +14,23 @@ class ViewNewsViewController: UIViewController {
     lazy var image: ImageView = {
         let image = ImageView(frame: .zero)
         image.loadImage(imageUrl: news?.imageUrl ?? "")
-        //image.contentMode = .scaleAspectFill
         return image
     }()
     
-    lazy var bodyLbl: Label = {
-        let label = Label(frame: .zero)
+    lazy var titleLbl: Label = {
+        let label = Label()
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.text = news?.title ?? ""
+        return label
+    }()
+    
+    lazy var bodyLbl: UITextView = {
+        let label = UITextView()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "This text"
-        //label.numberOfLines = 0
+        label.isEditable = false
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.textAlignment = .justified
         label.attributedText = (news?.body ?? "").htmlToAttributedString
         return label
     }()
@@ -41,6 +50,7 @@ class ViewNewsViewController: UIViewController {
     
     private func setConstraints() {
         view.addSubview(image)
+        view.addSubview(titleLbl)
         view.addSubview(bodyLbl)
         let imageHeight = view.bounds.width * 0.75
         
@@ -49,12 +59,18 @@ class ViewNewsViewController: UIViewController {
             image.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             image.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             image.heightAnchor.constraint(equalToConstant: imageHeight),
-            
-            bodyLbl.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 0),
-            bodyLbl.leadingAnchor.constraint(equalTo: image.leadingAnchor),
-            bodyLbl.trailingAnchor.constraint(equalTo: image.trailingAnchor),
-            bodyLbl.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        
+        titleLbl.snp.makeConstraints { make in
+            make.top.equalTo(image.snp.bottom).offset(10)
+            make.leading.trailing.equalTo(image)
+        }
+        
+        bodyLbl.snp.makeConstraints { make in
+            make.top.equalTo(titleLbl.snp.bottom).offset(10)
+            make.leading.trailing.equalTo(image)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 
 }

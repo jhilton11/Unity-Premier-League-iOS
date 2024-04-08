@@ -7,3 +7,17 @@
 //
 
 import Foundation
+import UIKit
+
+extension UILabel {
+    func addTrailing(image: UIImage) {
+        let attachment = NSTextAttachment()
+        attachment.image = image
+
+        let attachmentString = NSAttributedString(attachment: attachment)
+        let string = NSMutableAttributedString(string: self.text!, attributes: [:])
+
+        string.append(attachmentString)
+        self.attributedText = string
+    }
+}

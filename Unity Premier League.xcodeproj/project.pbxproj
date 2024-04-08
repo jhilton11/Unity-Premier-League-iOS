@@ -35,8 +35,14 @@
 		1886A23A253073FF00F4E2B5 /* ViewNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886A239253073FE00F4E2B5 /* ViewNewsViewController.swift */; };
 		18D9E1D02555459D00CC91BB /* PlayerStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E1CF2555459D00CC91BB /* PlayerStatCell.swift */; };
 		18E9DD4F255923F1004DCCFA /* LeagueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E9DD4E255923F1004DCCFA /* LeagueTableViewController.swift */; };
+		3F23E3AB2BA3313E00984772 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F23E3AA2BA3313E00984772 /* SnapKit */; };
+		3F23E3AD2BA3313E00984772 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 3F23E3AC2BA3313E00984772 /* SnapKit-Dynamic */; };
+		3F23E3AF2BA380EC00984772 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F23E3AE2BA380EC00984772 /* UIFont+Extension.swift */; };
+		3F23E3B12BA3B73D00984772 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F23E3B02BA3B73D00984772 /* UILabel+Extension.swift */; };
+		3F23E3B32BA789C300984772 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F23E3B22BA789C300984772 /* GoogleService-Info.plist */; };
+		3F3C2F372BB9C662004432ED /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3C2F362BB9C662004432ED /* CarouselCell.swift */; };
+		3F3C2F3A2BBD67BF004432ED /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3C2F392BBD67BF004432ED /* SwiftSoup */; };
 		3FBD3BC52B4F5881003EE2DE /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBD3BC42B4F5881003EE2DE /* TabController.swift */; };
-		3FF024452B4A1271001FFE39 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FF024442B4A1271001FFE39 /* GoogleService-Info.plist */; };
 		3FF024472B4A27C6001FFE39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF024462B4A27C6001FFE39 /* SceneDelegate.swift */; };
 		3FF0244A2B4A2FFD001FFE39 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF024492B4A2FFD001FFE39 /* Extensions.swift */; };
 		3FF024542B4B005A001FFE39 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF024532B4B005A001FFE39 /* ImageView.swift */; };
@@ -100,8 +106,11 @@
 		18D9E1CF2555459D00CC91BB /* PlayerStatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatCell.swift; sourceTree = "<group>"; };
 		18E9DD4E255923F1004DCCFA /* LeagueTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTableViewController.swift; sourceTree = "<group>"; };
 		25DD62D9B98D3805DBFB2B5E /* Pods_Unity_Premier_LeagueTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unity_Premier_LeagueTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F23E3AE2BA380EC00984772 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		3F23E3B02BA3B73D00984772 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		3F23E3B22BA789C300984772 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3F3C2F362BB9C662004432ED /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
 		3FBD3BC42B4F5881003EE2DE /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
-		3FF024442B4A1271001FFE39 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3FF024462B4A27C6001FFE39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3FF024492B4A2FFD001FFE39 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3FF024532B4B005A001FFE39 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
@@ -121,8 +130,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F23E3AB2BA3313E00984772 /* SnapKit in Frameworks */,
 				63A6DE40C20146461E6420B8 /* Pods_Unity_Premier_League.framework in Frameworks */,
 				3FF0245B2B4B60DD001FFE39 /* iOSDropDown in Frameworks */,
+				3F23E3AD2BA3313E00984772 /* SnapKit-Dynamic in Frameworks */,
+				3F3C2F3A2BBD67BF004432ED /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +188,6 @@
 				3FF0244D2B4A3D17001FFE39 /* Teams */,
 				3FF0244E2B4A3D4E001FFE39 /* Stats */,
 				3FF024502B4A3DF6001FFE39 /* League Table */,
-				3FF024512B4A3E25001FFE39 /* View Match */,
 				3FF0244F2B4A3D86001FFE39 /* Players */,
 				3FF024482B4A2FCE001FFE39 /* Extensions */,
 				1825E90E252C415D00FC2AFF /* AppDelegate.swift */,
@@ -185,9 +196,9 @@
 				1825E917252C415E00FC2AFF /* Assets.xcassets */,
 				1825E919252C415E00FC2AFF /* LaunchScreen.storyboard */,
 				1825E91C252C415E00FC2AFF /* Info.plist */,
-				3FF024442B4A1271001FFE39 /* GoogleService-Info.plist */,
 				18727FB525594CEE0027F40C /* Util.swift */,
 				3FBD3BC42B4F5881003EE2DE /* TabController.swift */,
+				3F23E3B22BA789C300984772 /* GoogleService-Info.plist */,
 			);
 			path = "Unity Premier League";
 			sourceTree = "<group>";
@@ -214,6 +225,8 @@
 			isa = PBXGroup;
 			children = (
 				3FF024492B4A2FFD001FFE39 /* Extensions.swift */,
+				3F23E3AE2BA380EC00984772 /* UIFont+Extension.swift */,
+				3F23E3B02BA3B73D00984772 /* UILabel+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -225,6 +238,7 @@
 				1825E94A252C6FB300FC2AFF /* NewsCell.swift */,
 				1884F53C252F53490091B552 /* News.swift */,
 				1886A239253073FE00F4E2B5 /* ViewNewsViewController.swift */,
+				3F3C2F362BB9C662004432ED /* CarouselCell.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -235,6 +249,7 @@
 				1839F5EC252DAF7D006DA590 /* FixturesViewController.swift */,
 				1873E9C325387283001F891C /* FixturesCell.swift */,
 				1873E9C525387770001F891C /* Fixture.swift */,
+				3FF024512B4A3E25001FFE39 /* View Match */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -340,6 +355,9 @@
 			name = "Unity Premier League";
 			packageProductDependencies = (
 				3FF0245A2B4B60DD001FFE39 /* iOSDropDown */,
+				3F23E3AA2BA3313E00984772 /* SnapKit */,
+				3F23E3AC2BA3313E00984772 /* SnapKit-Dynamic */,
+				3F3C2F392BBD67BF004432ED /* SwiftSoup */,
 			);
 			productName = "Unity Premier League";
 			productReference = 1825E90B252C415D00FC2AFF /* Unity Premier League.app */;
@@ -417,6 +435,8 @@
 			mainGroup = 1825E902252C415D00FC2AFF;
 			packageReferences = (
 				3FF024592B4B60DD001FFE39 /* XCRemoteSwiftPackageReference "iOSDropDown" */,
+				3F23E3A92BA3313E00984772 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				3F3C2F382BBD67BE004432ED /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 1825E90C252C415D00FC2AFF /* Products */;
 			projectDirPath = "";
@@ -435,7 +455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1825E91B252C415E00FC2AFF /* LaunchScreen.storyboard in Resources */,
-				3FF024452B4A1271001FFE39 /* GoogleService-Info.plist in Resources */,
+				3F23E3B32BA789C300984772 /* GoogleService-Info.plist in Resources */,
 				1825E918252C415E00FC2AFF /* Assets.xcassets in Resources */,
 				1825E916252C415D00FC2AFF /* Main.storyboard in Resources */,
 			);
@@ -538,6 +558,7 @@
 			files = (
 				3FF024542B4B005A001FFE39 /* ImageView.swift in Sources */,
 				1839F5ED252DAF7D006DA590 /* FixturesViewController.swift in Sources */,
+				3F23E3B12BA3B73D00984772 /* UILabel+Extension.swift in Sources */,
 				1825E94D252C81CB00FC2AFF /* Team.swift in Sources */,
 				1884F537252F1B1D0091B552 /* ViewTeamViewController.swift in Sources */,
 				1873E9CC2539A3D6001F891C /* MatchStatCell.swift in Sources */,
@@ -556,7 +577,9 @@
 				18727FB4255933270027F40C /* LeagueTableCell.swift in Sources */,
 				1884F539252F2F0D0091B552 /* PlayerViewController.swift in Sources */,
 				3FF024562B4B0151001FFE39 /* Label.swift in Sources */,
+				3F3C2F372BB9C662004432ED /* CarouselCell.swift in Sources */,
 				1884F53D252F53490091B552 /* News.swift in Sources */,
+				3F23E3AF2BA380EC00984772 /* UIFont+Extension.swift in Sources */,
 				3FBD3BC52B4F5881003EE2DE /* TabController.swift in Sources */,
 				1873E9C825397DEE001F891C /* ViewMatchViewController.swift in Sources */,
 				3FF0244A2B4A2FFD001FFE39 /* Extensions.swift in Sources */,
@@ -900,6 +923,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3F23E3A92BA3313E00984772 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		3F3C2F382BBD67BE004432ED /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.2;
+			};
+		};
 		3FF024592B4B60DD001FFE39 /* XCRemoteSwiftPackageReference "iOSDropDown" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jriosdev/iOSDropDown.git";
@@ -911,6 +950,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3F23E3AA2BA3313E00984772 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F23E3A92BA3313E00984772 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		3F23E3AC2BA3313E00984772 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F23E3A92BA3313E00984772 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		3F3C2F392BBD67BF004432ED /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3C2F382BBD67BE004432ED /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
 		3FF0245A2B4B60DD001FFE39 /* iOSDropDown */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3FF024592B4B60DD001FFE39 /* XCRemoteSwiftPackageReference "iOSDropDown" */;

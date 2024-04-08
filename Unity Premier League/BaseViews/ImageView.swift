@@ -15,8 +15,8 @@ class ImageView: UIImageView {
         
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 10
-        layer.borderWidth = 5
-        layer.borderColor = UIColor.white.cgColor
+//        layer.borderWidth = 5
+//        layer.borderColor = UIColor.white.cgColor
         clipsToBounds = true
     }
     
