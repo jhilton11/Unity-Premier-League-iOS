@@ -110,7 +110,7 @@ class LeagueTableCell: UITableViewCell {
         }
         
         teamsLabel.snp.makeConstraints { make in
-            make.leading.equalTo(teamImage.snp.trailing).offset(10)
+            make.leading.equalTo(teamImage.snp.trailing).offset(5)
             make.trailing.equalTo(playedLabel.snp.leading).offset(-5)
             make.centerY.equalTo(posLabel.snp.centerY)
         }
@@ -152,13 +152,13 @@ class LeagueTableCell: UITableViewCell {
         }
         
         gdLabel.snp.makeConstraints { make in
-            make.trailing.equalTo(pointsLabel.snp.leading).offset(-5)
+            make.trailing.equalTo(pointsLabel.snp.leading)//.offset(-5)
             make.centerY.equalTo(posLabel.snp.centerY)
             make.width.equalTo(width)
         }
         
         pointsLabel.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-10)
+            make.trailing.equalToSuperview().offset(-5)
             make.centerY.equalTo(posLabel.snp.centerY)
             make.width.equalTo(width)
         }

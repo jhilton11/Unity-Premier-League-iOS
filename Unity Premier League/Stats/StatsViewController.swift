@@ -11,7 +11,7 @@ import Firebase
 
 class StatsViewController: UIViewController {
     
-    var goalScorers: [Player] = []
+    var players: [Player] = []
     var stats: [MatchStat] = []
     var leagues: [String] = []
     var leagueNames: [String] = []
@@ -68,6 +68,7 @@ class StatsViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.title = "Stats"
         view.backgroundColor = .white
+        mode = .goals
         loadLeagues()
         setConstraints()
         
@@ -97,20 +98,38 @@ class StatsViewController: UIViewController {
     
     @objc private func didTapGoals() {
         toggleButtonStates(goalsButton, yellowsButton, redsButton)
-        mode = .goals
-        loadStats(leagueId: leagueId)
+        setGoals()
     }
     
     @objc private func didTapYellow() {
         toggleButtonStates(yellowsButton, goalsButton, redsButton)
-        mode = .yellow
-        loadStats(leagueId: leagueId)
+        setYellows()
     }
     
     @objc private func didTapRed() {
         toggleButtonStates(redsButton, yellowsButton, goalsButton)
+        setReds()
+    }
+    
+    private func setGoals() {
+        mode = .goals
+        var goalStats = self.stats.filter{$0.eventType == "goal" || $0.eventType == "penalty goal"}
+        self.players = self.getScorers(stats: goalStats)
+        scorersTable.reloadData()
+    }
+    
+    private func setYellows() {
+        mode = .yellow
+        var yellowStats = self.stats.filter{$0.eventType == "yellow"}
+        self.players = self.getScorers(stats: yellowStats)
+        scorersTable.reloadData()
+    }
+    
+    private func setReds() {
         mode = .red
-        loadStats(leagueId: leagueId)
+        var redStats = self.stats.filter{$0.eventType == "red" || $0.eventType == "second yellow"}
+        self.players = self.getScorers(stats: redStats)
+        scorersTable.reloadData()
     }
     
     private func loadLeagues() {
@@ -138,9 +157,9 @@ class StatsViewController: UIViewController {
                 
                 self?.leaguePicker.optionArray = self!.leagueNames
                 
-                if !self!.leagues.isEmpty {
-                    self?.leaguePicker.text = self?.leagueNames[0] ?? ""
-                    self?.loadStats(leagueId: self!.leagues[0])
+                if let self = self, !self.leagues.isEmpty {
+                    self.leaguePicker.text = self.leagueNames[0]
+                    self.loadStats(leagueId: self.leagues[0])
                 }
         }
     }
@@ -149,36 +168,41 @@ class StatsViewController: UIViewController {
         let db = Firestore.firestore()
         
         db.collection("stats").whereField("leagueId", isEqualTo: leagueId)
-            .whereField("type", isEqualTo: mode.rawValue)
             .addSnapshotListener {querySnapshot, error in
                 guard let snapshots = querySnapshot?.documents else {
                     print("Error: \(error.debugDescription)")
                     return
                 }
                 
-                print("Snapshot has \(querySnapshot?.count) stats")
+                print("Snapshot has \(querySnapshot?.count ?? 0) stats")
                 
                 self.stats = []
                 
                 for document in snapshots {
-                    let id = document.data()["id"] as! String
-                    let name = document.data()["name"] as! String
-                    let playerId = document.data()["playerId"] as! String
-                    let imageUrl = document.data()["playerImageUrl"] as! String
-                    let matchId = document.data()["matchId"] as! String
-                    let leagueId = document.data()["leagueId"] as! String
-                    let teamName = document.data()["teamName"] as! String
-                    let type = document.data()["type"] as! String
-                    let isHome = document.data()["home"] as! Bool
+                    let id = document.data()["id"] as? String ?? ""
+                    let name = document.data()["name"] as? String ?? ""
+                    let playerId = document.data()["playerId"] as? String ?? ""
+                    let imageUrl = document.data()["playerImageUrl"] as? String ?? ""
+                    let matchId = document.data()["matchId"] as? String ?? ""
+                    let leagueId = document.data()["leagueId"] as? String ?? ""
+                    let teamName = document.data()["teamName"] as? String ?? ""
+                    let type = document.data()["type"] as? String ?? ""
+                    let isHome = document.data()["home"] as? Bool ?? false
                     
                     let stat = MatchStat(id: id, name: name, playerId: playerId, url: imageUrl, matchId: matchId, type: type, league: leagueId)
                     stat.isHome = isHome
                     stat.teamName = teamName
                     self.stats.append(stat);
                 }
-                self.goalScorers = self.getScorers(stats: self.stats)
                 
-                self.scorersTable.reloadData()
+                switch (self.mode) {
+                case .goals:
+                    self.setGoals()
+                case .yellow:
+                    self.setYellows()
+                case .red:
+                    self.setReds()
+                }
         }
     }
     
@@ -261,13 +285,13 @@ class StatsViewController: UIViewController {
 extension StatsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return goalScorers.count
+        return players.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PlayerStatCell.identifier) as! PlayerStatCell
         let row = indexPath.row
-        let player = goalScorers[row]
+        let player = players[row]
         cell.loadPlayerStat(player: player)
         cell.posLabel.text = "\(row + 1)"
         return cell

@@ -198,20 +198,20 @@ class ViewMatchViewController: UIViewController {
                     return
                 }
                 
-                print("Snapshot has \(querySnapshot?.count) items")
+                print("Snapshot has \(querySnapshot?.count ?? 0) items")
                 
                 self?.stats = []
                 
                 for document in snapshots {
-                    let id = document.data()["id"] as! String
-                    let name = document.data()["name"] as! String
-                    let playerId = document.data()["playerId"] as! String
-                    let imageUrl = document.data()["playerImageUrl"] as! String
-                    let matchId = document.data()["matchId"] as! String
-                    let leagueId = document.data()["leagueId"] as! String
-                    let type = document.data()["type"] as! String
-                    let isHome = document.data()["home"] as! Bool
-                    let minute = document.data()["minute"] as! String
+                    let id = document.data()["id"] as? String ?? ""
+                    let name = document.data()["name"] as? String ?? ""
+                    let playerId = document.data()["playerId"] as? String ?? ""
+                    let imageUrl = document.data()["playerImageUrl"] as? String ?? ""
+                    let matchId = document.data()["matchId"] as? String ?? ""
+                    let leagueId = document.data()["leagueId"] as? String ?? ""
+                    let type = document.data()["type"] as? String ?? ""
+                    let isHome = document.data()["home"] as? Bool ?? false
+                    let minute = document.data()["minute"] as? String ?? ""
                     
                     let stat = MatchStat(id: id, name: name, playerId: playerId, url: imageUrl, matchId: matchId, type: type, league: leagueId)
                     stat.isHome = isHome
@@ -234,6 +234,9 @@ extension ViewMatchViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: MatchStatCell.identifier) as! MatchStatCell
         let row = indexPath.row
         cell.loadStat(stat: stats[row])
+        cell.selectionStyle = .none
         return cell
     }
+    
+    
 }

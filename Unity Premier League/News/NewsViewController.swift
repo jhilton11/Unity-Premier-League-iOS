@@ -134,7 +134,6 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     let body = document.data()["body"] as? String ?? ""
                     
                     let news = News(id: id, title: name, imageUrl: imageUrl, body: body)
-                    print(news)
                     self.newsArray.append(news);
                 }
                 
@@ -175,6 +174,9 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @objc private func updatePage() {
+        guard !carouselPages.isEmpty else {
+            return
+        }
         currentPage += 1
         currentPage = currentPage >= carouselPages.count ? 0 : currentPage
         let i = IndexPath(item: currentPage, section: 0)

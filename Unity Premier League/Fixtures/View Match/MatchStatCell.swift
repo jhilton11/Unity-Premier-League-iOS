@@ -43,7 +43,6 @@ class MatchStatCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setConstraints()
     }
     
@@ -96,8 +95,25 @@ class MatchStatCell: UITableViewCell {
         }
     }
     
+    private func formatMinute(minute: String?) -> String {
+        guard let minute = minute else {
+            return "0"
+        }
+        
+        if minute.count <= 1 {
+            return "0" + minute
+        }
+        
+        if minute.count > 2, Array(minute)[0] == "0" {
+            let sliced = Array(minute).dropFirst()
+            return String(sliced)
+        }
+        
+        return minute
+    }
+    
     func loadStat(stat: MatchStat) {
-        minuteLabel.text = "\(stat.minute ?? "")'"
+        minuteLabel.text = "\(formatMinute(minute: stat.minute))'"
         if let isHm = stat.isHome {
             if isHm {
                 homePlayerLabel.text = stat.playerName

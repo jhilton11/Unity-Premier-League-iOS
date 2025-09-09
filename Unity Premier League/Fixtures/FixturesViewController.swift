@@ -13,7 +13,8 @@ import FirebaseFirestore
 
 class FixturesViewController: UIViewController {
 
-    var fixtures: [Fixture] = []
+    var matches: [Fixture] = []
+    var selectedMatches = [Fixture]()
     var leagues: [String] = []
     var leagueNames: [String] = []
     fileprivate var mode: Mode = .fixtures
@@ -58,25 +59,40 @@ class FixturesViewController: UIViewController {
         self.title = "Fixtures"
         loadLeagues()
         setConstraints()
+        mode = .fixtures
         
         leaguePicker.didSelect {  [weak self]
             selectedText, index, id in
-            self?.leagueId = self!.leagues[index]
-            self?.load(id: self!.leagueId)
-            print("Selected \(selectedText)")
+            if let self = self {
+                self.leagueId = self.leagues[index]
+                self.load(id: self.leagueId)
+                print("Selected \(selectedText)")
+            } else {
+                print("self is nil")
+            }
         }
     }
     
-    @objc private func didTapFixtures() {
+    private func setFixtures() {
         mode = .fixtures
+        selectedMatches = matches.filter{ $0.status == "not played" }
+        fixturesTable.reloadData()
+    }
+    
+    private func setResults() {
+        mode = .results
+        selectedMatches = matches.filter{ $0.status == "played" || $0.status == "live" }.sorted{$0.matchNo ?? 0 > $1.matchNo ?? 0}
+        fixturesTable.reloadData()
+    }
+    
+    @objc private func didTapFixtures() {
         toggleButtonStates(fixturesButton, resultsButton)
-        load(id: leagueId)
+        setFixtures()
     }
     
     @objc private func didTapResults() {
-        mode = .results
         toggleButtonStates(resultsButton, fixturesButton)
-        load(id: leagueId)
+        setResults()
     }
     
     private func toggleButtonStates(_ first: UIButton, _ second: UIButton) {
@@ -100,7 +116,7 @@ class FixturesViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             leaguePicker.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            leaguePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            leaguePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -10),
             leaguePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             leaguePicker.heightAnchor.constraint(equalToConstant: 50),
             
@@ -110,7 +126,7 @@ class FixturesViewController: UIViewController {
             fixturesTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
         
-        fixturesButton.snp.makeConstraints { make in
+        resultsButton.snp.makeConstraints { make in
             let width = (view.bounds.width-30)/2
             make.top.equalTo(leaguePicker.snp.bottom)//.offset(10)
             make.leading.equalToSuperview().offset(10)
@@ -118,10 +134,10 @@ class FixturesViewController: UIViewController {
             make.height.equalTo(40)
         }
         
-        resultsButton.snp.makeConstraints { make in
-            make.top.equalTo(fixturesButton.snp.top)
+        fixturesButton.snp.makeConstraints { make in
+            make.top.equalTo(resultsButton.snp.top)
             make.trailing.equalToSuperview().offset(-10)
-            make.width.height.equalTo(fixturesButton)
+            make.width.height.equalTo(resultsButton)
         }
     }
     
@@ -150,22 +166,21 @@ class FixturesViewController: UIViewController {
                 
                 self?.leaguePicker.optionArray = self!.leagueNames
                 
-                if !self!.leagues.isEmpty {
-                    self?.leaguePicker.text = self?.leagueNames[0] ?? ""
-                    self?.leagueId = self!.leagues[0]
-                    self?.load(id: self!.leagueId)
+                if let self = self, !self.leagues.isEmpty {
+                    self.leaguePicker.text = self.leagueNames[0]
+                    self.leagueId = self.leagues[0]
+                    self.load(id: self.leagueId)
                 }
         }
     }
     
-    func loadMatches(id: String, status: String = "played", descending: Bool = true) {
+    func loadMatches(id: String, descending: Bool = true) {
         let db = Firestore.firestore()
         
         let leagueId = id
         db.collection("matches")
             .whereField("leagueId", isEqualTo: leagueId)
-            .whereField("status", isEqualTo: status)
-            .order(by: "matchNo", descending: descending)
+            .order(by: "matchNo")
             .addSnapshotListener {querySnapshot, error in
                 guard let snapshots = querySnapshot?.documents else {
                     return
@@ -173,11 +188,9 @@ class FixturesViewController: UIViewController {
                 
                 print("There are \(querySnapshot!.count) matches in \(leagueId)")
                 
-                self.fixtures = []
-                var matno: Int = 0;
+                self.matches = []
                 
                 for document in snapshots {
-                    matno = matno + 1
                     let id = document.data()["id"] as! String
                     let homeTeam = document.data()["homeTeam"] as? String ?? ""
                     let homeTeamId = document.data()["homeTeamId"] as? String ?? ""
@@ -198,25 +211,24 @@ class FixturesViewController: UIViewController {
                     match.homeScore = homeScore
                     match.awayScore = awayScore
                     match.matchNo = matchNo
-                    match.cellNo = matno
+                    match.cellNo = matchNo
                     match.status = status
                     match.date = date
                     match.venue = venue
                     
-                    self.fixtures.append(match);
+                    self.matches.append(match)
                 }
                 
-                self.fixturesTable.reloadData()
+                if self.mode == .fixtures {
+                    self.setFixtures()
+                } else {
+                    self.setResults()
+                }
         }
     }
     
     private func load(id: String) {
-        switch (mode) {
-        case .fixtures:
-            loadMatches(id: id, status: "not-played", descending: false)
-        case .results:
-            loadMatches(id: id, status: "played", descending: true)
-        }
+        loadMatches(id: id, descending: false)
     }
 
     // MARK: - Navigation
@@ -228,7 +240,7 @@ class FixturesViewController: UIViewController {
         if segue.identifier == "matchDetail" {
             if let indexPath = self.fixturesTable.indexPathForSelectedRow {
                 let vc = segue.destination as! ViewMatchViewController
-                vc.match = fixtures[indexPath.row]
+                vc.match = matches[indexPath.row]
                 vc.hidesBottomBarWhenPushed = true
             }
         }
@@ -239,11 +251,11 @@ class FixturesViewController: UIViewController {
 extension FixturesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fixtures.count
+        return selectedMatches.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let match = fixtures[indexPath.row]
+        let match = selectedMatches[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: FixturesCell.identifier) as! FixturesCell
         cell.setMatch(match: match)
         return cell
@@ -251,7 +263,7 @@ extension FixturesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ViewMatchViewController()
-        vc.match = fixtures[indexPath.row]
+        vc.match = selectedMatches[indexPath.row]
         Util.pushToNavigationController(navC: navigationController, vc: vc)
     }
     

@@ -63,7 +63,6 @@ class PlayerStatCell: UITableViewCell {
         contentView.addSubview(posLabel)
         contentView.addSubview(playerImage)
         contentView.addSubview(playerName)
-//        contentView.addSubview(teamName)
         contentView.addSubview(statsLabel)
         
         let width = (contentView.bounds.width - 100)/2
@@ -82,16 +81,9 @@ class PlayerStatCell: UITableViewCell {
         
         playerName.snp.makeConstraints { make in
             make.leading.equalTo(playerImage.snp.trailing).offset(20)
-            make.trailing.equalTo(statsLabel.snp.trailing).offset(10)
+            make.trailing.equalTo(statsLabel.snp.leading).offset(-20)
             make.centerY.equalTo(playerImage.snp.centerY)
-            make.width.equalTo(width)
         }
-        
-//        teamName.snp.makeConstraints { make in
-//            make.leading.equalTo(playerName.snp.trailing)
-//            make.trailing.equalTo(statsLabel.snp.leading).offset(-10)
-//            make.centerY.equalTo(posLabel.snp.centerY)
-//        }
         
         statsLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-10)

@@ -204,8 +204,10 @@ class LeagueTableViewController: UIViewController {
                 return teamA.points > teamB.points
             } else if (teamA.gd != teamB.gd) {
                 return teamA.gd > teamB.gd
-            } else {
+            } else if (teamA.gf != teamB.gf) {
                 return teamA.gf > teamB.gf
+            } else {
+                return teamA.name < teamB.name
             }
         }
         

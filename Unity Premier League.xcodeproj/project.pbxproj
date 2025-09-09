@@ -35,21 +35,33 @@
 		1886A23A253073FF00F4E2B5 /* ViewNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886A239253073FE00F4E2B5 /* ViewNewsViewController.swift */; };
 		18D9E1D02555459D00CC91BB /* PlayerStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E1CF2555459D00CC91BB /* PlayerStatCell.swift */; };
 		18E9DD4F255923F1004DCCFA /* LeagueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E9DD4E255923F1004DCCFA /* LeagueTableViewController.swift */; };
-		3F23E3AB2BA3313E00984772 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F23E3AA2BA3313E00984772 /* SnapKit */; };
-		3F23E3AD2BA3313E00984772 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 3F23E3AC2BA3313E00984772 /* SnapKit-Dynamic */; };
 		3F23E3AF2BA380EC00984772 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F23E3AE2BA380EC00984772 /* UIFont+Extension.swift */; };
 		3F23E3B12BA3B73D00984772 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F23E3B02BA3B73D00984772 /* UILabel+Extension.swift */; };
 		3F23E3B32BA789C300984772 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F23E3B22BA789C300984772 /* GoogleService-Info.plist */; };
+		3F3063782E5D218100FC018C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063772E5D218100FC018C /* SnapKit */; };
+		3F30637A2E5D218100FC018C /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063792E5D218100FC018C /* SnapKit-Dynamic */; };
+		3F30637D2E5D21BB00FC018C /* iOSDropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 3F30637C2E5D21BB00FC018C /* iOSDropDown */; };
+		3F3063822E5D241600FC018C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063812E5D241600FC018C /* FirebaseAnalytics */; };
+		3F3063842E5D241600FC018C /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063832E5D241600FC018C /* FirebaseAppCheck */; };
+		3F3063862E5D241600FC018C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063852E5D241600FC018C /* FirebaseAuth */; };
+		3F3063882E5D241600FC018C /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063872E5D241600FC018C /* FirebaseAuthCombine-Community */; };
+		3F30638A2E5D241600FC018C /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063892E5D241600FC018C /* FirebaseCore */; };
+		3F30638C2E5D241600FC018C /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3F30638B2E5D241600FC018C /* FirebaseCrashlytics */; };
+		3F30638E2E5D241600FC018C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3F30638D2E5D241600FC018C /* FirebaseFirestore */; };
+		3F3063902E5D241600FC018C /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3F30638F2E5D241600FC018C /* FirebaseFirestoreCombine-Community */; };
+		3F3063922E5D241600FC018C /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063912E5D241600FC018C /* FirebaseFunctions */; };
+		3F3063942E5D241600FC018C /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063932E5D241600FC018C /* FirebaseInAppMessaging-Beta */; };
+		3F3063962E5D241600FC018C /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063952E5D241600FC018C /* FirebaseMessaging */; };
+		3F3063982E5D241600FC018C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063972E5D241600FC018C /* FirebaseStorage */; };
+		3F30639A2E5D241600FC018C /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063992E5D241600FC018C /* FirebaseStorageCombine-Community */; };
+		3F30639D2E5D247600FC018C /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 3F30639C2E5D247600FC018C /* SwiftSoup */; };
 		3F3C2F372BB9C662004432ED /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3C2F362BB9C662004432ED /* CarouselCell.swift */; };
-		3F3C2F3A2BBD67BF004432ED /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3C2F392BBD67BF004432ED /* SwiftSoup */; };
 		3FBD3BC52B4F5881003EE2DE /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBD3BC42B4F5881003EE2DE /* TabController.swift */; };
 		3FF024472B4A27C6001FFE39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF024462B4A27C6001FFE39 /* SceneDelegate.swift */; };
 		3FF0244A2B4A2FFD001FFE39 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF024492B4A2FFD001FFE39 /* Extensions.swift */; };
 		3FF024542B4B005A001FFE39 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF024532B4B005A001FFE39 /* ImageView.swift */; };
 		3FF024562B4B0151001FFE39 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF024552B4B0151001FFE39 /* Label.swift */; };
 		3FF024582B4B5F06001FFE39 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF024572B4B5F06001FFE39 /* DropDown.swift */; };
-		3FF0245B2B4B60DD001FFE39 /* iOSDropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 3FF0245A2B4B60DD001FFE39 /* iOSDropDown */; };
-		63A6DE40C20146461E6420B8 /* Pods_Unity_Premier_League.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08C9ABA91AF0E545DB2356FC /* Pods_Unity_Premier_League.framework */; };
 		82CE0CA3495D799CF6A92AE9 /* Pods_Unity_Premier_LeagueUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B873E865051EC913D9FCE56 /* Pods_Unity_Premier_LeagueUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,12 +129,6 @@
 		3FF024552B4B0151001FFE39 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		3FF024572B4B5F06001FFE39 /* DropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
 		7B873E865051EC913D9FCE56 /* Pods_Unity_Premier_LeagueUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unity_Premier_LeagueUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7EE37F3B9EDABAB712E3272A /* Pods-Unity Premier LeagueUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier LeagueUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier LeagueUITests/Pods-Unity Premier LeagueUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		9916D4F64D588A40052E8831 /* Pods-Unity Premier LeagueUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier LeagueUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier LeagueUITests/Pods-Unity Premier LeagueUITests.release.xcconfig"; sourceTree = "<group>"; };
-		B337F3B35B5C7CE3C2FFB6E2 /* Pods-Unity Premier League.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier League.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier League/Pods-Unity Premier League.release.xcconfig"; sourceTree = "<group>"; };
-		D18D22456479CCB549DCEFDC /* Pods-Unity Premier LeagueTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier LeagueTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier LeagueTests/Pods-Unity Premier LeagueTests.debug.xcconfig"; sourceTree = "<group>"; };
-		F7C2FD818615F8740AF102FF /* Pods-Unity Premier League.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier League.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier League/Pods-Unity Premier League.debug.xcconfig"; sourceTree = "<group>"; };
-		FFCAEFBABE7F6FB1D1C0D947 /* Pods-Unity Premier LeagueTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Premier LeagueTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Premier LeagueTests/Pods-Unity Premier LeagueTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,11 +136,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F23E3AB2BA3313E00984772 /* SnapKit in Frameworks */,
-				63A6DE40C20146461E6420B8 /* Pods_Unity_Premier_League.framework in Frameworks */,
-				3FF0245B2B4B60DD001FFE39 /* iOSDropDown in Frameworks */,
-				3F23E3AD2BA3313E00984772 /* SnapKit-Dynamic in Frameworks */,
-				3F3C2F3A2BBD67BF004432ED /* SwiftSoup in Frameworks */,
+				3F3063942E5D241600FC018C /* FirebaseInAppMessaging-Beta in Frameworks */,
+				3F30637D2E5D21BB00FC018C /* iOSDropDown in Frameworks */,
+				3F3063962E5D241600FC018C /* FirebaseMessaging in Frameworks */,
+				3F3063862E5D241600FC018C /* FirebaseAuth in Frameworks */,
+				3F3063782E5D218100FC018C /* SnapKit in Frameworks */,
+				3F3063922E5D241600FC018C /* FirebaseFunctions in Frameworks */,
+				3F30638E2E5D241600FC018C /* FirebaseFirestore in Frameworks */,
+				3F3063822E5D241600FC018C /* FirebaseAnalytics in Frameworks */,
+				3F30639D2E5D247600FC018C /* SwiftSoup in Frameworks */,
+				3F3063982E5D241600FC018C /* FirebaseStorage in Frameworks */,
+				3F3063902E5D241600FC018C /* FirebaseFirestoreCombine-Community in Frameworks */,
+				3F30639A2E5D241600FC018C /* FirebaseStorageCombine-Community in Frameworks */,
+				3F3063842E5D241600FC018C /* FirebaseAppCheck in Frameworks */,
+				3F3063882E5D241600FC018C /* FirebaseAuthCombine-Community in Frameworks */,
+				3F30638C2E5D241600FC018C /* FirebaseCrashlytics in Frameworks */,
+				3F30638A2E5D241600FC018C /* FirebaseCore in Frameworks */,
+				3F30637A2E5D218100FC018C /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,7 +182,6 @@
 				1825E924252C415E00FC2AFF /* Unity Premier LeagueTests */,
 				1825E92F252C415E00FC2AFF /* Unity Premier LeagueUITests */,
 				1825E90C252C415D00FC2AFF /* Products */,
-				F68D4DD2671BFB5988BCE1AC /* Pods */,
 				DE71E668AF28BA5B05E81631 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -322,19 +339,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F68D4DD2671BFB5988BCE1AC /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F7C2FD818615F8740AF102FF /* Pods-Unity Premier League.debug.xcconfig */,
-				B337F3B35B5C7CE3C2FFB6E2 /* Pods-Unity Premier League.release.xcconfig */,
-				D18D22456479CCB549DCEFDC /* Pods-Unity Premier LeagueTests.debug.xcconfig */,
-				FFCAEFBABE7F6FB1D1C0D947 /* Pods-Unity Premier LeagueTests.release.xcconfig */,
-				7EE37F3B9EDABAB712E3272A /* Pods-Unity Premier LeagueUITests.debug.xcconfig */,
-				9916D4F64D588A40052E8831 /* Pods-Unity Premier LeagueUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -342,11 +346,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1825E935252C415E00FC2AFF /* Build configuration list for PBXNativeTarget "Unity Premier League" */;
 			buildPhases = (
-				91C79C1E42B22D687B33E3E1 /* [CP] Check Pods Manifest.lock */,
 				1825E907252C415D00FC2AFF /* Sources */,
 				1825E908252C415D00FC2AFF /* Frameworks */,
 				1825E909252C415D00FC2AFF /* Resources */,
-				7645F1D05584FC536B5723E5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -354,10 +356,23 @@
 			);
 			name = "Unity Premier League";
 			packageProductDependencies = (
-				3FF0245A2B4B60DD001FFE39 /* iOSDropDown */,
-				3F23E3AA2BA3313E00984772 /* SnapKit */,
-				3F23E3AC2BA3313E00984772 /* SnapKit-Dynamic */,
-				3F3C2F392BBD67BF004432ED /* SwiftSoup */,
+				3F3063772E5D218100FC018C /* SnapKit */,
+				3F3063792E5D218100FC018C /* SnapKit-Dynamic */,
+				3F30637C2E5D21BB00FC018C /* iOSDropDown */,
+				3F3063812E5D241600FC018C /* FirebaseAnalytics */,
+				3F3063832E5D241600FC018C /* FirebaseAppCheck */,
+				3F3063852E5D241600FC018C /* FirebaseAuth */,
+				3F3063872E5D241600FC018C /* FirebaseAuthCombine-Community */,
+				3F3063892E5D241600FC018C /* FirebaseCore */,
+				3F30638B2E5D241600FC018C /* FirebaseCrashlytics */,
+				3F30638D2E5D241600FC018C /* FirebaseFirestore */,
+				3F30638F2E5D241600FC018C /* FirebaseFirestoreCombine-Community */,
+				3F3063912E5D241600FC018C /* FirebaseFunctions */,
+				3F3063932E5D241600FC018C /* FirebaseInAppMessaging-Beta */,
+				3F3063952E5D241600FC018C /* FirebaseMessaging */,
+				3F3063972E5D241600FC018C /* FirebaseStorage */,
+				3F3063992E5D241600FC018C /* FirebaseStorageCombine-Community */,
+				3F30639C2E5D247600FC018C /* SwiftSoup */,
 			);
 			productName = "Unity Premier League";
 			productReference = 1825E90B252C415D00FC2AFF /* Unity Premier League.app */;
@@ -434,9 +449,10 @@
 			);
 			mainGroup = 1825E902252C415D00FC2AFF;
 			packageReferences = (
-				3FF024592B4B60DD001FFE39 /* XCRemoteSwiftPackageReference "iOSDropDown" */,
-				3F23E3A92BA3313E00984772 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				3F3C2F382BBD67BE004432ED /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				3F3063762E5D218100FC018C /* XCRemoteSwiftPackageReference "SnapKit" */,
+				3F30637B2E5D21BB00FC018C /* XCRemoteSwiftPackageReference "iOSDropDown" */,
+				3F3063802E5D241600FC018C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3F30639B2E5D247600FC018C /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 1825E90C252C415D00FC2AFF /* Products */;
 			projectDirPath = "";
@@ -508,41 +524,6 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Unity Premier LeagueUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7645F1D05584FC536B5723E5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Unity Premier League/Pods-Unity Premier League-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Unity Premier League/Pods-Unity Premier League-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Unity Premier League/Pods-Unity Premier League-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		91C79C1E42B22D687B33E3E1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Unity Premier League-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -692,7 +673,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -746,7 +727,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -757,7 +738,6 @@
 		};
 		1825E936252C415E00FC2AFF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7C2FD818615F8740AF102FF /* Pods-Unity Premier League.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -777,7 +757,6 @@
 		};
 		1825E937252C415E00FC2AFF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B337F3B35B5C7CE3C2FFB6E2 /* Pods-Unity Premier League.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -797,7 +776,6 @@
 		};
 		1825E939252C415E00FC2AFF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D18D22456479CCB549DCEFDC /* Pods-Unity Premier LeagueTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -819,7 +797,6 @@
 		};
 		1825E93A252C415E00FC2AFF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FFCAEFBABE7F6FB1D1C0D947 /* Pods-Unity Premier LeagueTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -841,7 +818,6 @@
 		};
 		1825E93C252C415E00FC2AFF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7EE37F3B9EDABAB712E3272A /* Pods-Unity Premier LeagueUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -862,7 +838,6 @@
 		};
 		1825E93D252C415E00FC2AFF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9916D4F64D588A40052E8831 /* Pods-Unity Premier LeagueUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -923,7 +898,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3F23E3A92BA3313E00984772 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		3F3063762E5D218100FC018C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -931,15 +906,7 @@
 				minimumVersion = 5.7.1;
 			};
 		};
-		3F3C2F382BBD67BE004432ED /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.7.2;
-			};
-		};
-		3FF024592B4B60DD001FFE39 /* XCRemoteSwiftPackageReference "iOSDropDown" */ = {
+		3F30637B2E5D21BB00FC018C /* XCRemoteSwiftPackageReference "iOSDropDown" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jriosdev/iOSDropDown.git";
 			requirement = {
@@ -947,28 +914,109 @@
 				minimumVersion = 0.4.0;
 			};
 		};
+		3F3063802E5D241600FC018C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.10.0;
+			};
+		};
+		3F30639B2E5D247600FC018C /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3F23E3AA2BA3313E00984772 /* SnapKit */ = {
+		3F3063772E5D218100FC018C /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3F23E3A92BA3313E00984772 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 3F3063762E5D218100FC018C /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		3F23E3AC2BA3313E00984772 /* SnapKit-Dynamic */ = {
+		3F3063792E5D218100FC018C /* SnapKit-Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3F23E3A92BA3313E00984772 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 3F3063762E5D218100FC018C /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
 		};
-		3F3C2F392BBD67BF004432ED /* SwiftSoup */ = {
+		3F30637C2E5D21BB00FC018C /* iOSDropDown */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3F3C2F382BBD67BE004432ED /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
-		};
-		3FF0245A2B4B60DD001FFE39 /* iOSDropDown */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3FF024592B4B60DD001FFE39 /* XCRemoteSwiftPackageReference "iOSDropDown" */;
+			package = 3F30637B2E5D21BB00FC018C /* XCRemoteSwiftPackageReference "iOSDropDown" */;
 			productName = iOSDropDown;
+		};
+		3F3063812E5D241600FC018C /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3063802E5D241600FC018C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		3F3063832E5D241600FC018C /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3063802E5D241600FC018C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		3F3063852E5D241600FC018C /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3063802E5D241600FC018C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		3F3063872E5D241600FC018C /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3063802E5D241600FC018C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+		3F3063892E5D241600FC018C /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3063802E5D241600FC018C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		3F30638B2E5D241600FC018C /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3063802E5D241600FC018C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		3F30638D2E5D241600FC018C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3063802E5D241600FC018C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		3F30638F2E5D241600FC018C /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3063802E5D241600FC018C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		3F3063912E5D241600FC018C /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3063802E5D241600FC018C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		3F3063932E5D241600FC018C /* FirebaseInAppMessaging-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3063802E5D241600FC018C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessaging-Beta";
+		};
+		3F3063952E5D241600FC018C /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3063802E5D241600FC018C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		3F3063972E5D241600FC018C /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3063802E5D241600FC018C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		3F3063992E5D241600FC018C /* FirebaseStorageCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3063802E5D241600FC018C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageCombine-Community";
+		};
+		3F30639C2E5D247600FC018C /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F30639B2E5D247600FC018C /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

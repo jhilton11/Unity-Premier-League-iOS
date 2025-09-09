@@ -37,7 +37,6 @@ class TeamsViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Teams"
-        loadLeagues()
         view.backgroundColor = .white
         setConstraints()
         
@@ -46,6 +45,10 @@ class TeamsViewController: UIViewController {
             self?.loadTeams(id: self!.leagues[index])
             print("Selected \(selectedText)")
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadLeagues()
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,7 +62,7 @@ class TeamsViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             leaguePicker.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            leaguePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            leaguePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -10),
             leaguePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             leaguePicker.heightAnchor.constraint(equalToConstant: 50),
             
@@ -94,9 +97,9 @@ class TeamsViewController: UIViewController {
                 }
                 self?.leaguePicker.optionArray = self!.leagueNames
                 
-                if !self!.leagues.isEmpty {
-                    self?.leaguePicker.text = self?.leagueNames[0] ?? ""
-                    self?.loadTeams(id: self!.leagues[0])
+                if let self = self, !self.leagues.isEmpty {
+                    self.leaguePicker.text = self.leagueNames[0]
+                    self.loadTeams(id: self.leagues[0])
                 }
         }
     }

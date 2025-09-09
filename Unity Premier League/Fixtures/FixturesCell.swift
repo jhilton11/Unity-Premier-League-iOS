@@ -48,9 +48,9 @@ class FixturesCell: UITableViewCell {
     }()
     
     lazy var awayLogo: ImageView = {
-            let image = ImageView(frame: .zero)
-            image.layer.borderColor = UIColor.clear.cgColor
-            return image
+        let image = ImageView(frame: .zero)
+        image.layer.borderColor = UIColor.clear.cgColor
+        return image
     }()
     
     lazy var awayLabel: UILabel = {
@@ -84,13 +84,13 @@ class FixturesCell: UITableViewCell {
         }
         
         numberLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
+            make.leading.equalToSuperview().offset(10)
             make.width.equalTo(30)
             make.centerY.equalToSuperview()
         }
         
         homeLogo.snp.makeConstraints { make in
-            make.width.height.equalTo(40)
+            make.width.height.equalTo(30)
             make.leading.equalTo(numberLabel.snp.trailing)
             make.centerY.equalToSuperview()
         }
@@ -99,13 +99,13 @@ class FixturesCell: UITableViewCell {
             make.leading.equalTo(homeLogo.snp.trailing).offset(10)
             make.trailing.equalTo(scoreLabel.snp.leading).offset(-10)
             make.centerY.equalToSuperview()
-            make.width.equalTo(80)
+//            make.width.equalTo(80)
         }
         
         scoreLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview().offset(10)
             make.centerY.equalToSuperview()
-//            make.width.equalTo(40)
+            make.width.equalTo(40)
         }
         
         awayLabel.snp.makeConstraints { make in
