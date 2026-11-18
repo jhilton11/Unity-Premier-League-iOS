@@ -42,7 +42,7 @@ class PlayerViewController: UIViewController {
         
         if let p = player {
             self.title = p.name;
-            teamNameLbl.text = p.teamName?.capitalized
+            teamNameLbl.text = p.teamName
             
             playerImage.loadImage(imageUrl: player!.imageUrl)
         }

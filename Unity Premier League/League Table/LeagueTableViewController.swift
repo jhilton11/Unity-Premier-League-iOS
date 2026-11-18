@@ -40,7 +40,6 @@ class LeagueTableViewController: UIViewController {
         leaguePicker.didSelect {  [weak self]
             selectedText, index, id in
             self?.loadLeagueTable(leagueId: self!.leagues[index])
-            print("Selected \(selectedText)")
         }
     }
     
@@ -82,7 +81,6 @@ class LeagueTableViewController: UIViewController {
                         self?.leagues.append(id)
                         let name = id.replacingOccurrences(of: "_", with: "/")
                         self?.leagueNames.append(name)
-                        print(name)
                     }
                 }
                 
@@ -104,7 +102,6 @@ class LeagueTableViewController: UIViewController {
                     return
                 }
                 var matches: [Fixture] = []
-                print("There are \(querySnapshot!.count) matches in \(leagueId)")
                 
                 for document in snapshots {
                     let id = document.data()["id"] as! String
@@ -156,13 +153,11 @@ class LeagueTableViewController: UIViewController {
                 result.append(t)
             }
         }
-        print(teamIds)
         
-        let playedMatches = matches.filter{$0.status=="played"}
+        let playedMatches = matches.filter{$0.status=="played" || $0.status=="live"}
         
         //compute league table
         for tm in result {
-            print("Computing team \(tm.name)")
             for match in playedMatches {
                 //check for home matches
                 if (tm.id == match.homeTeamId) {

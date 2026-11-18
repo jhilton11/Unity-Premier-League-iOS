@@ -8,21 +8,11 @@
 
 import Foundation
 
-class News {
-    var id: String = ""
-    var title: String = ""
-    var imageUrl: String = ""
+struct News {
+    let id: String
+    var author: String?
+    let title: String
+    let imageUrl: String
     var body: String?
-    var date: String?
-    
-    init() {
-        
-    }
-    
-    init(id: String, title: String, imageUrl: String, body: String) {
-        self.id = id
-        self.title = title
-        self.imageUrl = imageUrl
-        self.body = body
-    }
+    var date: Date?
 }

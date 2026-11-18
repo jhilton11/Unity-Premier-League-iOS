@@ -35,11 +35,11 @@
 		1886A23A253073FF00F4E2B5 /* ViewNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886A239253073FE00F4E2B5 /* ViewNewsViewController.swift */; };
 		18D9E1D02555459D00CC91BB /* PlayerStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9E1CF2555459D00CC91BB /* PlayerStatCell.swift */; };
 		18E9DD4F255923F1004DCCFA /* LeagueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E9DD4E255923F1004DCCFA /* LeagueTableViewController.swift */; };
+		3F17745F2E771F0E009102E5 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F17745E2E771F0E009102E5 /* UIColor+Extension.swift */; };
+		3F1774622E78309E009102E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F1774612E78309E009102E5 /* GoogleService-Info.plist */; };
 		3F23E3AF2BA380EC00984772 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F23E3AE2BA380EC00984772 /* UIFont+Extension.swift */; };
 		3F23E3B12BA3B73D00984772 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F23E3B02BA3B73D00984772 /* UILabel+Extension.swift */; };
-		3F23E3B32BA789C300984772 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F23E3B22BA789C300984772 /* GoogleService-Info.plist */; };
 		3F3063782E5D218100FC018C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063772E5D218100FC018C /* SnapKit */; };
-		3F30637A2E5D218100FC018C /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063792E5D218100FC018C /* SnapKit-Dynamic */; };
 		3F30637D2E5D21BB00FC018C /* iOSDropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 3F30637C2E5D21BB00FC018C /* iOSDropDown */; };
 		3F3063822E5D241600FC018C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063812E5D241600FC018C /* FirebaseAnalytics */; };
 		3F3063842E5D241600FC018C /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063832E5D241600FC018C /* FirebaseAppCheck */; };
@@ -56,6 +56,7 @@
 		3F30639A2E5D241600FC018C /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3063992E5D241600FC018C /* FirebaseStorageCombine-Community */; };
 		3F30639D2E5D247600FC018C /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 3F30639C2E5D247600FC018C /* SwiftSoup */; };
 		3F3C2F372BB9C662004432ED /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3C2F362BB9C662004432ED /* CarouselCell.swift */; };
+		3FBB99A22E7335C3007CF6A4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBB99A12E7335C3007CF6A4 /* Theme.swift */; };
 		3FBD3BC52B4F5881003EE2DE /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBD3BC42B4F5881003EE2DE /* TabController.swift */; };
 		3FF024472B4A27C6001FFE39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF024462B4A27C6001FFE39 /* SceneDelegate.swift */; };
 		3FF0244A2B4A2FFD001FFE39 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF024492B4A2FFD001FFE39 /* Extensions.swift */; };
@@ -118,10 +119,13 @@
 		18D9E1CF2555459D00CC91BB /* PlayerStatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatCell.swift; sourceTree = "<group>"; };
 		18E9DD4E255923F1004DCCFA /* LeagueTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTableViewController.swift; sourceTree = "<group>"; };
 		25DD62D9B98D3805DBFB2B5E /* Pods_Unity_Premier_LeagueTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unity_Premier_LeagueTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F17745E2E771F0E009102E5 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		3F1774602E780320009102E5 /* Unity Premier League.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Unity Premier League.entitlements"; sourceTree = "<group>"; };
+		3F1774612E78309E009102E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F23E3AE2BA380EC00984772 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		3F23E3B02BA3B73D00984772 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
-		3F23E3B22BA789C300984772 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F3C2F362BB9C662004432ED /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
+		3FBB99A12E7335C3007CF6A4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3FBD3BC42B4F5881003EE2DE /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		3FF024462B4A27C6001FFE39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3FF024492B4A2FFD001FFE39 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -152,7 +156,6 @@
 				3F3063882E5D241600FC018C /* FirebaseAuthCombine-Community in Frameworks */,
 				3F30638C2E5D241600FC018C /* FirebaseCrashlytics in Frameworks */,
 				3F30638A2E5D241600FC018C /* FirebaseCore in Frameworks */,
-				3F30637A2E5D218100FC018C /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +202,7 @@
 		1825E90D252C415D00FC2AFF /* Unity Premier League */ = {
 			isa = PBXGroup;
 			children = (
+				3F1774602E780320009102E5 /* Unity Premier League.entitlements */,
 				3FF024522B4AFFD3001FFE39 /* BaseViews */,
 				3FF0244B2B4A3CA3001FFE39 /* News */,
 				3FF0244C2B4A3CD6001FFE39 /* Fixtures */,
@@ -215,7 +219,7 @@
 				1825E91C252C415E00FC2AFF /* Info.plist */,
 				18727FB525594CEE0027F40C /* Util.swift */,
 				3FBD3BC42B4F5881003EE2DE /* TabController.swift */,
-				3F23E3B22BA789C300984772 /* GoogleService-Info.plist */,
+				3F1774612E78309E009102E5 /* GoogleService-Info.plist */,
 			);
 			path = "Unity Premier League";
 			sourceTree = "<group>";
@@ -244,6 +248,8 @@
 				3FF024492B4A2FFD001FFE39 /* Extensions.swift */,
 				3F23E3AE2BA380EC00984772 /* UIFont+Extension.swift */,
 				3F23E3B02BA3B73D00984772 /* UILabel+Extension.swift */,
+				3FBB99A12E7335C3007CF6A4 /* Theme.swift */,
+				3F17745E2E771F0E009102E5 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -357,7 +363,6 @@
 			name = "Unity Premier League";
 			packageProductDependencies = (
 				3F3063772E5D218100FC018C /* SnapKit */,
-				3F3063792E5D218100FC018C /* SnapKit-Dynamic */,
 				3F30637C2E5D21BB00FC018C /* iOSDropDown */,
 				3F3063812E5D241600FC018C /* FirebaseAnalytics */,
 				3F3063832E5D241600FC018C /* FirebaseAppCheck */,
@@ -471,7 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1825E91B252C415E00FC2AFF /* LaunchScreen.storyboard in Resources */,
-				3F23E3B32BA789C300984772 /* GoogleService-Info.plist in Resources */,
+				3F1774622E78309E009102E5 /* GoogleService-Info.plist in Resources */,
 				1825E918252C415E00FC2AFF /* Assets.xcassets in Resources */,
 				1825E916252C415D00FC2AFF /* Main.storyboard in Resources */,
 			);
@@ -540,6 +545,7 @@
 				3FF024542B4B005A001FFE39 /* ImageView.swift in Sources */,
 				1839F5ED252DAF7D006DA590 /* FixturesViewController.swift in Sources */,
 				3F23E3B12BA3B73D00984772 /* UILabel+Extension.swift in Sources */,
+				3F17745F2E771F0E009102E5 /* UIColor+Extension.swift in Sources */,
 				1825E94D252C81CB00FC2AFF /* Team.swift in Sources */,
 				1884F537252F1B1D0091B552 /* ViewTeamViewController.swift in Sources */,
 				1873E9CC2539A3D6001F891C /* MatchStatCell.swift in Sources */,
@@ -562,6 +568,7 @@
 				1884F53D252F53490091B552 /* News.swift in Sources */,
 				3F23E3AF2BA380EC00984772 /* UIFont+Extension.swift in Sources */,
 				3FBD3BC52B4F5881003EE2DE /* TabController.swift in Sources */,
+				3FBB99A22E7335C3007CF6A4 /* Theme.swift in Sources */,
 				1873E9C825397DEE001F891C /* ViewMatchViewController.swift in Sources */,
 				3FF0244A2B4A2FFD001FFE39 /* Extensions.swift in Sources */,
 				1873E9C425387283001F891C /* FixturesCell.swift in Sources */,
@@ -740,18 +747,25 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Unity Premier League/Unity Premier League.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D23XA4RQVP;
 				INFOPLIST_FILE = "Unity Premier League/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_KEY_CFBundleDisplayName = "Unity PL";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appify.Unity-Premier-League";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appify.unity-pl";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -759,18 +773,25 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Unity Premier League/Unity Premier League.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D23XA4RQVP;
 				INFOPLIST_FILE = "Unity Premier League/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_KEY_CFBundleDisplayName = "Unity PL";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appify.Unity-Premier-League";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appify.unity-pl";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -937,11 +958,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3F3063762E5D218100FC018C /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		3F3063792E5D218100FC018C /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3F3063762E5D218100FC018C /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 		3F30637C2E5D21BB00FC018C /* iOSDropDown */ = {
 			isa = XCSwiftPackageProductDependency;

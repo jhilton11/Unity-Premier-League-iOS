@@ -24,6 +24,18 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var timer = Timer()
     
+    lazy var scrollview: UIScrollView = {
+        let scrollview = UIScrollView()
+        scrollview.translatesAutoresizingMaskIntoConstraints =  false
+        return scrollview
+    }()
+    
+    lazy var contentView: UIView = {
+        let content = UIView()
+        content.translatesAutoresizingMaskIntoConstraints = false
+        return content
+    }()
+    
     lazy var carouselView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -66,22 +78,39 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         view.backgroundColor = .white
         title = "News"
         setConstraints()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         loadNews()
         loadCarousels()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
     private func setConstraints() {
-        view.addSubview(carouselView)
-        view.addSubview(pageControl)
-        view.addSubview(newsTable)
+        view.addSubview(scrollview)
+        scrollview.addSubview(contentView)
+        contentView.addSubview(carouselView)
+        contentView.addSubview(pageControl)
+        contentView.addSubview(newsTable)
+        
+        scrollview.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.top.equalTo(scrollview)
+            make.leading.equalTo(scrollview)
+            make.trailing.equalTo(scrollview.snp.trailing)
+            make.bottom.equalTo(scrollview)
+            make.width.equalTo(view)
+            make.height.equalTo(1000)
+        }
         
         carouselView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(0)
-            make.leading.equalToSuperview().offset(10)
-            make.trailing.equalToSuperview().offset(-10)
+            make.top.equalTo(contentView.snp.top).offset(0)
+            make.leading.equalTo(contentView.snp.leading).offset(10)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-10)
             make.height.equalTo(height)
         }
         
@@ -93,9 +122,9 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         newsTable.snp.makeConstraints { make in
             make.top.equalTo(pageControl.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(10)
-            make.trailing.equalToSuperview().offset(-10)
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.leading.equalTo(contentView).offset(10)
+            make.trailing.equalTo(contentView).offset(-10)
+            make.bottom.equalTo(contentView)
         }
     }
 
@@ -119,21 +148,22 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
             .order(by: "createdAt", descending: true)
             .addSnapshotListener {querySnapshot, error in
                 guard let snapshots = querySnapshot?.documents else {
-                    print("Error: \(error)")
+                    print("Error: \(String(describing: error))")
                     return
                 }
-                
-                //print("News collection has \(querySnapshot?.count) news items")
                 
                 self.newsArray = []
                 
                 for document in snapshots {
-                    let id = document.data()["id"] as! String
-                    let name = document.data()["title"] as! String
+                    let id = document.data()["id"] as? String ?? ""
+                    let title = document.data()["title"] as? String ?? ""
                     let imageUrl = document.data()["imgUrl"] as? String ?? ""
                     let body = document.data()["body"] as? String ?? ""
+                    let author = document.data()["author"] as? String ?? ""
+                    let timestamp = document.data()["createdAt"] as? Timestamp ?? Timestamp()
+                    let date = timestamp.dateValue()
                     
-                    let news = News(id: id, title: name, imageUrl: imageUrl, body: body)
+                    let news = News(id: id, author: author, title: title, imageUrl: imageUrl, body: body, date: date)
                     self.newsArray.append(news);
                 }
                 
@@ -149,18 +179,16 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
             .addSnapshotListener { [weak self]
                 querySnapshot, error in
                 guard let snapshots = querySnapshot?.documents else {
-                    print("Error: \(error)")
+                    print("Error: \(String(describing: error))")
                     return
                 }
-                
-                //print("News collection has \(querySnapshot?.count) news items")
                 
                 self?.carouselPages = []
                 
                 for document in snapshots {
-                    let id = document.data()["id"] as! String
-                    let imgUrl = document.data()["imgUrl"] as! String
-                    let message = document.data()["message"] as! String
+                    _ = document.data()["id"] as? String ?? ""
+                    let imgUrl = document.data()["imgUrl"] as? String ?? ""
+                    let message = document.data()["message"] as? String ?? ""
                     
                     let carousel = Carousel(imgUrl: imgUrl, message: message)
                     print(carousel)

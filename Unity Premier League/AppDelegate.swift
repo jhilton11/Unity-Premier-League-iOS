@@ -8,22 +8,43 @@
 
 import UIKit
 import Firebase
+import UserNotifications
+import FirebaseMessaging
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = TabController() // Your initial view controller.
-        window.makeKeyAndVisible()
-        self.window = window
+        // Cloud messaging
+        Messaging.messaging().delegate = self
+        
+        UNUserNotificationCenter.current().delegate = self
+
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+          options: authOptions,
+          completionHandler: { _, _ in }
+        )
+
+        application.registerForRemoteNotifications()
+        
         return true
+    }
+
+    @available(iOS 13.0, *)
+    func application(_ application: UIApplication,
+                     configurationForConnecting connectingSceneSession: UISceneSession,
+                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
+
+    @available(iOS 13.0, *)
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -46,6 +67,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        Messaging.messaging().token { token, error in
+          if let error = error {
+            print("Error fetching FCM registration token: \(error)")
+          } else if let token = token {
+            print("FCM registration token: \(token)")
+//            self.fcmRegTokenMessage.text  = "Remote FCM registration token: \(token)"
+          }
+        }
+        
+        // Monitor add token updates
+        let dataDict: [String: String] = ["token": fcmToken ?? ""]
+        NotificationCenter.default.post(
+          name: Notification.Name("FCMToken"),
+          object: nil,
+          userInfo: dataDict
+        )
+        // TODO: If necessary send token to application server.
+    }
+    
+//    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+//        print("📩 FCM data message: \(remoteMessage.appData)")
+//    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                  didReceive response: UNNotificationResponse,
+                                  withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+
+        // Print full message.
+        print(userInfo)
+
+        completionHandler()
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        let userInfo = notification.request.content.userInfo
+        print("📩 Foreground notification received: \(userInfo)")
+        
+        completionHandler([.banner, .sound, .badge])
     }
 
 

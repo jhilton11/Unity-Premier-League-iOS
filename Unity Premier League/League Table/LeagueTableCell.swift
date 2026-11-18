@@ -65,6 +65,7 @@ class LeagueTableCell: UITableViewCell {
     
     lazy var pointsLabel: Label = {
         let label = Label()
+        label.textAlignment = .center
         return label
     }()
     
@@ -160,7 +161,7 @@ class LeagueTableCell: UITableViewCell {
         pointsLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-5)
             make.centerY.equalTo(posLabel.snp.centerY)
-            make.width.equalTo(width)
+            make.width.equalTo(30)
         }
     }
     
@@ -175,7 +176,6 @@ class LeagueTableCell: UITableViewCell {
         gaLabel.text = "GA"
         gdLabel.text = "GD"
         pointsLabel.text = "Pts"
-        print("Loading header position")
     }
     
     func loadTeam(p: Int, team: Team) {

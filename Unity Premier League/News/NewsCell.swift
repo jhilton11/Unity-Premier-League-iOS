@@ -14,16 +14,24 @@ class NewsCell: UITableViewCell {
     
     lazy var imageIcon = ImageView(frame: .zero)
     
-    lazy var titleLbl: Label = {
+    lazy var authorLbl: Label = {
         let label = Label(frame: .zero)
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.font = UIFont.preferredFont(forTextStyle: .footnote)
+        label.textColor = Theme.primaryColour
         return label
     }()
     
-    lazy var bodyLbl: Label = {
+    lazy var titleLbl: Label = {
         let label = Label(frame: .zero)
-        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
         label.numberOfLines = 2
+        return label
+    }()
+    
+    lazy var dateLbl: Label = {
+        let label = Label(frame: .zero)
+        label.font = UIFont.preferredFont(forTextStyle: .footnote)
+//        label.textColor = .lightGray
         return label
     }()
 
@@ -38,19 +46,21 @@ class NewsCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        //imageIcon.image = nil
+        imageIcon.image = nil
     }
     
     func configure(with news: News) {
         imageIcon.loadImage(imageUrl: news.imageUrl)
+        authorLbl.text = news.author
         titleLbl.text = news.title
-        bodyLbl.text = news.body?.parseHTMLString()
+        dateLbl.text = news.date?.formatDateToString()
     }
     
     private func setConstraints() {
         contentView.addSubview(imageIcon)
+        contentView.addSubview(authorLbl)
         contentView.addSubview(titleLbl)
-        contentView.addSubview(bodyLbl)
+        contentView.addSubview(dateLbl)
         
         NSLayoutConstraint.activate([
             imageIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -58,14 +68,18 @@ class NewsCell: UITableViewCell {
             imageIcon.widthAnchor.constraint(equalToConstant: 100),
             imageIcon.heightAnchor.constraint(equalToConstant: 100),
             
-            titleLbl.topAnchor.constraint(equalTo: imageIcon.topAnchor, constant: 5),
-            titleLbl.leadingAnchor.constraint(equalTo: imageIcon.trailingAnchor, constant: 10),
-            titleLbl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            authorLbl.topAnchor.constraint(equalTo: imageIcon.topAnchor, constant: 5),
+            authorLbl.leadingAnchor.constraint(equalTo: imageIcon.trailingAnchor, constant: 10),
+            authorLbl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             
-            bodyLbl.topAnchor.constraint(equalTo: titleLbl.bottomAnchor, constant: 0),
-            bodyLbl.leadingAnchor.constraint(equalTo: titleLbl.leadingAnchor),
-            bodyLbl.trailingAnchor.constraint(equalTo: titleLbl.trailingAnchor),
-            bodyLbl.bottomAnchor.constraint(equalTo: imageIcon.bottomAnchor, constant: -5),
+            titleLbl.topAnchor.constraint(equalTo: authorLbl.bottomAnchor, constant: 5),
+            titleLbl.leadingAnchor.constraint(equalTo: authorLbl.leadingAnchor),
+            titleLbl.trailingAnchor.constraint(equalTo: authorLbl.trailingAnchor),
+            
+//            dateLbl.topAnchor.constraint(equalTo: titleLbl.bottomAnchor, constant: 0),
+            dateLbl.leadingAnchor.constraint(equalTo: titleLbl.leadingAnchor),
+            dateLbl.trailingAnchor.constraint(equalTo: titleLbl.trailingAnchor),
+            dateLbl.bottomAnchor.constraint(equalTo: imageIcon.bottomAnchor, constant: 0),
         ])
     }
 

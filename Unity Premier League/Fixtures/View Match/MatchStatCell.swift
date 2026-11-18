@@ -72,19 +72,19 @@ class MatchStatCell: UITableViewCell {
         
         homeEventImage.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalTo(minuteLabel.snp.trailing).offset(10)
+            make.leading.equalTo(minuteLabel.snp.trailing).offset(5)
             make.width.height.equalTo(25)
         }
         
         homePlayerLabel.snp.makeConstraints { make in
             make.leading.equalTo(homeEventImage.snp.trailing).offset(10)
-            make.trailing.equalTo(contentView.snp.centerX).offset(-10)
+            make.trailing.equalTo(contentView.snp.centerX).offset(10)
             make.centerY.equalToSuperview()
         }
         
         awayPlayerLabel.snp.makeConstraints { make in
+            make.leading.equalTo(contentView.snp.centerX)
             make.trailing.equalTo(awayEventImage.snp.leading).offset(-10)
-            make.leading.equalTo(contentView.snp.centerX).offset(10)
             make.centerY.equalToSuperview()
         }
         

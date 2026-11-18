@@ -16,7 +16,6 @@ class ViewTeamViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     lazy var width: CGFloat = {
         let width = (view.bounds.width/3)-10
-//        print("cell width is \(width)")
         return width
     }()
 
@@ -49,7 +48,6 @@ class ViewTeamViewController: UIViewController, UICollectionViewDelegate, UIColl
         if let myTeam = team {
             self.title = "\(myTeam.name)"
             teamLogo.loadImage(imageUrl: myTeam.imageUrl)
-            print("\(myTeam.name)")
             loadData(team: myTeam)
             
         } else {
@@ -66,7 +64,6 @@ class ViewTeamViewController: UIViewController, UICollectionViewDelegate, UIColl
         let db = Firestore.firestore()
         
         let leagueId = team.currentLeague
-        print("League id: \(leagueId!)")
         db.collection("league_players").whereField("currentLeague", isEqualTo: leagueId!)
             .whereField("teamId", isEqualTo: team.id)
             .order(by: "name")
@@ -75,8 +72,6 @@ class ViewTeamViewController: UIViewController, UICollectionViewDelegate, UIColl
                     print("Error: \(error.debugDescription)")
                     return
                 }
-                
-                print("Snapshot has \(querySnapshot!.count) players")
                 
                 self.players = []
                 
@@ -88,7 +83,6 @@ class ViewTeamViewController: UIViewController, UICollectionViewDelegate, UIColl
                     
                     let player = Player(id: id, name: name, imageUrl: imageUrl)
                     player.teamName = teamName
-                    print(team)
                     self.players.append(player);
                 }
                 

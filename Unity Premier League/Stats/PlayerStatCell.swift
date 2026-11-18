@@ -65,7 +65,7 @@ class PlayerStatCell: UITableViewCell {
         contentView.addSubview(playerName)
         contentView.addSubview(statsLabel)
         
-        let width = (contentView.bounds.width - 100)/2
+        _ = (contentView.bounds.width - 100)/2
         
         posLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)

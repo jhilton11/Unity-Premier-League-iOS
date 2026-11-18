@@ -21,7 +21,7 @@ class ViewMatchViewController: UIViewController {
     
     lazy var leagueSeason: Label = {
         let label = Label()
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 18)
         label.textAlignment = .center
         return label
     }()
@@ -45,37 +45,39 @@ class ViewMatchViewController: UIViewController {
     lazy var homeTeamLabel: Label = {
         let label = Label()
         label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.textAlignment = .center
         return label
     }()
     
     lazy var awayTeamLabel: Label = {
         let label = Label()
         label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.textAlignment = .center
         return label
     }()
     
     lazy var venueLabel: Label = {
         let label = Label()
-        label.font = UIFont.preferredFont(forTextStyle: .title2)
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         return label
     }()
     
     lazy var refereeLabel: Label = {
         let label = Label()
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         return label
     }()
     
     lazy var dateLabel: Label = {
         let label = Label()
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         return label
     }()
     
     lazy var matchStatLabel: Label = {
         let label = Label()
-        label.text = "Match Stats"
-        label.font = UIFont.preferredFont(forTextStyle: .title2)
+        label.text = "Match Events"
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
         return label
     }()
     
@@ -153,15 +155,17 @@ class ViewMatchViewController: UIViewController {
         homeTeamLabel.snp.makeConstraints { make in
             make.top.equalTo(homeLogo.snp.bottom).offset(5)
             make.centerX.equalTo(homeLogo)
+            make.width.equalTo(homeLogo)
         }
         
         awayTeamLabel.snp.makeConstraints { make in
             make.top.equalTo(awayLogo.snp.bottom).offset(5)
             make.centerX.equalTo(awayLogo)
+            make.width.equalTo(homeLogo)
         }
         
         venueLabel.snp.makeConstraints { make in
-            make.top.equalTo(homeTeamLabel.snp.bottom).offset(30)
+            make.top.equalTo(homeTeamLabel.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
         }
         
@@ -171,7 +175,7 @@ class ViewMatchViewController: UIViewController {
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(refereeLabel.snp.bottom)//.offset(10)
+            make.top.equalTo(refereeLabel.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
         }
         
@@ -197,8 +201,6 @@ class ViewMatchViewController: UIViewController {
                     print("Error: \(error.debugDescription)")
                     return
                 }
-                
-                print("Snapshot has \(querySnapshot?.count ?? 0) items")
                 
                 self?.stats = []
                 

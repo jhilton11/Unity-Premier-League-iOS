@@ -24,7 +24,7 @@ class StatsViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 0
         button.setTitle("Goals", for: .normal)
-        button.backgroundColor = .purple
+        button.backgroundColor = Theme.primaryColour
         button.addTarget(self, action: #selector(didTapGoals), for: .touchUpInside)
         return button
     }()
@@ -34,7 +34,7 @@ class StatsViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 0
         button.setTitle("Yellow Cards", for: .normal)
-        button.setTitleColor(.purple, for: .normal)
+        button.setTitleColor(Theme.primaryColour, for: .normal)
         button.backgroundColor = .white
         button.addTarget(self, action: #selector(didTapYellow), for: .touchUpInside)
         return button
@@ -46,7 +46,7 @@ class StatsViewController: UIViewController {
         button.layer.cornerRadius = 0
         button.setTitle("Red Cards", for: .normal)
         button.backgroundColor = .white
-        button.setTitleColor(.purple, for: .normal)
+        button.setTitleColor(Theme.primaryColour, for: .normal)
         button.addTarget(self, action: #selector(didTapRed), for: .touchUpInside)
         return button
     }()
@@ -86,14 +86,14 @@ class StatsViewController: UIViewController {
     }
     
     private func toggleButtonStates(_ first: UIButton, _ second: UIButton, _ third: UIButton) {
-        first.backgroundColor = .purple
+        first.backgroundColor = Theme.primaryColour
         first.setTitleColor(.white, for: .normal)
         
         second.backgroundColor = .white
-        second.setTitleColor(.purple, for: .normal)
+        second.setTitleColor(Theme.primaryColour, for: .normal)
         
         third.backgroundColor = .white
-        third.setTitleColor(.purple, for: .normal)
+        third.setTitleColor(Theme.primaryColour, for: .normal)
     }
     
     @objc private func didTapGoals() {
@@ -113,21 +113,21 @@ class StatsViewController: UIViewController {
     
     private func setGoals() {
         mode = .goals
-        var goalStats = self.stats.filter{$0.eventType == "goal" || $0.eventType == "penalty goal"}
+        let goalStats = self.stats.filter{$0.eventType == "goal" || $0.eventType == "penalty goal"}
         self.players = self.getScorers(stats: goalStats)
         scorersTable.reloadData()
     }
     
     private func setYellows() {
         mode = .yellow
-        var yellowStats = self.stats.filter{$0.eventType == "yellow"}
+        let yellowStats = self.stats.filter{$0.eventType == "yellow"}
         self.players = self.getScorers(stats: yellowStats)
         scorersTable.reloadData()
     }
     
     private func setReds() {
         mode = .red
-        var redStats = self.stats.filter{$0.eventType == "red" || $0.eventType == "second yellow"}
+        let redStats = self.stats.filter{$0.eventType == "red" || $0.eventType == "second yellow"}
         self.players = self.getScorers(stats: redStats)
         scorersTable.reloadData()
     }
@@ -152,7 +152,6 @@ class StatsViewController: UIViewController {
                     self?.leagues.append(id)
                     let name = id.replacingOccurrences(of: "_", with: "/")
                     self?.leagueNames.append(name)
-                    print(name)
                 }
                 
                 self?.leaguePicker.optionArray = self!.leagueNames
@@ -173,8 +172,6 @@ class StatsViewController: UIViewController {
                     print("Error: \(error.debugDescription)")
                     return
                 }
-                
-                print("Snapshot has \(querySnapshot?.count ?? 0) stats")
                 
                 self.stats = []
                 
@@ -233,7 +230,13 @@ class StatsViewController: UIViewController {
         var array = Array(playerDict.values)
         
         //order the player array by goals in descending order
-        array.sort(by: {$0.goals > $1.goals})
+        array.sort{
+            if $0.goals != $1.goals {
+                return $0.goals > $1.goals
+            } else {
+                return $0.name < $1.name
+            }
+        }
         return array
     }
     

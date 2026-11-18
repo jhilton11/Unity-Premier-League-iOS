@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>978221051084-vo9kp0b2p4vpr22hkm379lf8gool7geo.apps.googleusercontent.com</string>
+	<string>978221051084-mull538iep9m6tj15ngsljl8ijovf1jq.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.978221051084-vo9kp0b2p4vpr22hkm379lf8gool7geo</string>
+	<string>com.googleusercontent.apps.978221051084-mull538iep9m6tj15ngsljl8ijovf1jq</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>978221051084-c64jd8097h8s8f1oobj7qcpbkmus2v09.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.appify.Unity-Premier-League</string>
+	<string>com.appify.unity-pl</string>
 	<key>PROJECT_ID</key>
 	<string>my-league-app</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:978221051084:ios:415518e897e203182aa669</string>
+	<string>1:978221051084:ios:2cd6a425bfde1b7c2aa669</string>
 	<key>DATABASE_URL</key>
 	<string>https://my-league-app.firebaseio.com</string>
 </dict>

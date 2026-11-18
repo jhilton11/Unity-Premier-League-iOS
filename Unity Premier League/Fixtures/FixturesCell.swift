@@ -35,7 +35,7 @@ class FixturesCell: UITableViewCell {
     
     lazy var homeLabel: UILabel = {
         let label = Label()
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         return label
     }()
     
@@ -55,7 +55,14 @@ class FixturesCell: UITableViewCell {
     
     lazy var awayLabel: UILabel = {
         let label = Label()
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        return label
+    }()
+    
+    lazy var liveLabel: UILabel = {
+        let label = Label()
+        label.font = UIFont.preferredFont(forTextStyle: .footnote)
+        label.text = "Live"
         return label
     }()
     
@@ -77,9 +84,10 @@ class FixturesCell: UITableViewCell {
         contentView.addSubview(awayLogo)
         contentView.addSubview(awayLabel)
         contentView.addSubview(dateLabel)
+        contentView.addSubview(liveLabel)
         
         dateLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(homeLogo.snp.top)
+            make.bottom.equalTo(homeLogo.snp.top).offset(-5)
             make.centerX.equalToSuperview()
         }
         
@@ -99,11 +107,10 @@ class FixturesCell: UITableViewCell {
             make.leading.equalTo(homeLogo.snp.trailing).offset(10)
             make.trailing.equalTo(scoreLabel.snp.leading).offset(-10)
             make.centerY.equalToSuperview()
-//            make.width.equalTo(80)
         }
         
         scoreLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview().offset(10)
+            make.centerX.equalToSuperview()//.offset(10)
             make.centerY.equalToSuperview()
             make.width.equalTo(40)
         }
@@ -119,6 +126,11 @@ class FixturesCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-10)
             make.centerY.equalToSuperview()
         }
+        
+        liveLabel.snp.makeConstraints { make in
+            make.top.equalTo(scoreLabel.snp.bottom).offset(5)
+            make.centerX.equalTo(scoreLabel.snp.centerX)
+        }
     }
     
     func setMatch(match: Fixture) {
@@ -127,26 +139,50 @@ class FixturesCell: UITableViewCell {
         }
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEE, dd MMM YYYY"
-        dateLabel.text = dateFormatter.string(from: match.date!)
+        dateFormatter.dateFormat = "EEE, dd MMMM YYYY"
+        if let date = match.date {
+            dateLabel.text = dateFormatter.string(from: date)
+        }
         
         homeLabel.text = match.homeTeam
         awayLabel.text = match.awayTeam
         
         if (match.status == "played") {
             scoreLabel.text = "\(match.homeScore) - \(match.awayScore)"
+            numberLabel.text = "FT"
+            liveLabel.isHidden = true
         } else if (match.status == "not played") {
             scoreLabel.text = "? - ?"
+            liveLabel.isHidden = true
         } else if (match.status == "live") {
             scoreLabel.text = "\(match.homeScore) - \(match.awayScore)"
+            liveLabel.isHidden = false
+            startFlashing(liveLabel)
         } else if (match.status == "half-time") {
             scoreLabel.text = "\(match.homeScore) - \(match.awayScore)"
+            liveLabel.isHidden = false
+            startFlashing(liveLabel)
+            liveLabel.text = "Half time"
         } else {
             scoreLabel.text = "P - P"
+            liveLabel.isHidden = true
         }
         
         homeLogo.loadImage(imageUrl: match.homeTeamImgUrl)
         awayLogo.loadImage(imageUrl: match.awayTeamImgUrl)
+    }
+    
+    func startFlashing(_ label: UILabel) {
+        let animation = CABasicAnimation(keyPath: "opacity")
+        animation.fromValue = 1.0
+        animation.toValue = 0.0
+        animation.duration = 0.5
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.autoreverses = true
+        animation.repeatCount = .infinity
+        
+        label.textColor = .red
+        label.layer.add(animation, forKey: "flash")
     }
 
 }

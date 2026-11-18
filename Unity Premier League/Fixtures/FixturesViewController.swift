@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import Firebase
 import FirebaseCore
 import FirebaseFirestore
 
@@ -36,7 +35,7 @@ class FixturesViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 10
         button.setTitle("Fixtures", for: .normal)
-        button.backgroundColor = .purple
+        button.setTitleColor(Theme.primaryColour, for: .normal)
         button.addTarget(self, action: #selector(didTapFixtures), for: .touchUpInside)
         return button
     }()
@@ -46,7 +45,7 @@ class FixturesViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 10
         button.setTitle("Results", for: .normal)
-        button.setTitleColor(.purple, for: .normal)
+        button.backgroundColor = Theme.primaryColour
         button.addTarget(self, action: #selector(didTapResults), for: .touchUpInside)
         return button
     }()
@@ -59,14 +58,13 @@ class FixturesViewController: UIViewController {
         self.title = "Fixtures"
         loadLeagues()
         setConstraints()
-        mode = .fixtures
+        mode = .results
         
         leaguePicker.didSelect {  [weak self]
             selectedText, index, id in
             if let self = self {
                 self.leagueId = self.leagues[index]
                 self.load(id: self.leagueId)
-                print("Selected \(selectedText)")
             } else {
                 print("self is nil")
             }
@@ -96,11 +94,11 @@ class FixturesViewController: UIViewController {
     }
     
     private func toggleButtonStates(_ first: UIButton, _ second: UIButton) {
-        first.backgroundColor = .purple
+        first.backgroundColor = Theme.primaryColour
         first.setTitleColor(.white, for: .normal)
         
         second.backgroundColor = .white
-        second.setTitleColor(.purple, for: .normal)
+        second.setTitleColor(Theme.primaryColour, for: .normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,7 +125,7 @@ class FixturesViewController: UIViewController {
         ])
         
         resultsButton.snp.makeConstraints { make in
-            let width = (view.bounds.width-30)/2
+            let width = (view.bounds.width-20)/2
             make.top.equalTo(leaguePicker.snp.bottom)//.offset(10)
             make.leading.equalToSuperview().offset(10)
             make.width.equalTo(width)
@@ -161,7 +159,6 @@ class FixturesViewController: UIViewController {
                     self?.leagues.append(id)
                     let name = id.replacingOccurrences(of: "_", with: "/")
                     self?.leagueNames.append(name)
-                    print(name)
                 }
                 
                 self?.leaguePicker.optionArray = self!.leagueNames
@@ -186,8 +183,6 @@ class FixturesViewController: UIViewController {
                     return
                 }
                 
-                print("There are \(querySnapshot!.count) matches in \(leagueId)")
-                
                 self.matches = []
                 
                 for document in snapshots {
@@ -203,9 +198,9 @@ class FixturesViewController: UIViewController {
                     let awayScore = document.data()["awayScore"] as? Int ?? 0
                     let status = document.data()["status"] as? String ?? ""
                     let matchNo = document.data()["matchNo"] as? Int ?? 0
-                    let date = document.data()["date"] as? Date ?? Date()
+                    let date = document.data()["date"] as? Timestamp
                     let venue = document.data()["venue"] as? String ?? ""
-                    let referee = document.data()["referee"] as? String ?? ""
+                    _ = document.data()["referee"] as? String ?? ""
                     
                     let match = Fixture(id: id, homeTeam: homeTeam, homeTeamId: homeTeamId, homeTeamImgUrl: homeTeamUrl, awayTeam: awayTeam, awayTeamId: awayTeamId, awayTeamImgUrl: awayTeamUrl, leagueId: leagueId)
                     match.homeScore = homeScore
@@ -213,7 +208,7 @@ class FixturesViewController: UIViewController {
                     match.matchNo = matchNo
                     match.cellNo = matchNo
                     match.status = status
-                    match.date = date
+                    match.date = date?.dateValue() 
                     match.venue = venue
                     
                     self.matches.append(match)
@@ -241,7 +236,7 @@ class FixturesViewController: UIViewController {
             if let indexPath = self.fixturesTable.indexPathForSelectedRow {
                 let vc = segue.destination as! ViewMatchViewController
                 vc.match = matches[indexPath.row]
-                vc.hidesBottomBarWhenPushed = true
+//                vc.hidesBottomBarWhenPushed = true
             }
         }
     }

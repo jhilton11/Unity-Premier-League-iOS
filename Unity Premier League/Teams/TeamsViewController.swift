@@ -15,8 +15,7 @@ class TeamsViewController: UIViewController {
     var leagueNames: [String] = []
     
     lazy var width: CGFloat = {
-        let width = (view.bounds.width/4)-10
-//        print("cell width is \(width)")
+        let width = (view.bounds.width/4) - 7.5
         return width
     }()
 
@@ -42,8 +41,9 @@ class TeamsViewController: UIViewController {
         
         leaguePicker.didSelect {  [weak self]
             selectedText, index, id in
-            self?.loadTeams(id: self!.leagues[index])
-            print("Selected \(selectedText)")
+            if let self = self {
+                self.loadTeams(id: self.leagues[index])
+            }
         }
     }
     
@@ -93,11 +93,10 @@ class TeamsViewController: UIViewController {
                     self?.leagues.append(id)
                     let name = id.replacingOccurrences(of: "_", with: "/")
                     self?.leagueNames.append(name)
-                    print(name)
                 }
-                self?.leaguePicker.optionArray = self!.leagueNames
                 
                 if let self = self, !self.leagues.isEmpty {
+                    self.leaguePicker.optionArray = self.leagueNames
                     self.leaguePicker.text = self.leagueNames[0]
                     self.loadTeams(id: self.leagues[0])
                 }
@@ -114,8 +113,6 @@ class TeamsViewController: UIViewController {
                 guard let snapshots = querySnapshot?.documents else {
                     return
                 }
-                
-                print("There are \(querySnapshot!.count) teams in \(leagueId)")
                 
                 self.teams = []
                 
@@ -157,7 +154,7 @@ extension TeamsViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: width, height: width * 1.2)
+        return CGSize(width: width, height: width * 1.5)
     }
     
 }

@@ -34,6 +34,20 @@ class ViewNewsViewController: UIViewController {
         label.attributedText = (news?.body ?? "").htmlToAttributedString
         return label
     }()
+    
+    lazy var authorLbl: Label = {
+        let label = Label()
+        label.font = UIFont.preferredFont(forTextStyle: .footnote)
+        label.text = news?.author ?? ""
+        return label
+    }()
+    
+    lazy var dateLbl: Label = {
+        let label = Label()
+        label.font = UIFont.preferredFont(forTextStyle: .footnote)
+        label.text = news?.date?.formatDateToString() ?? ""
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,25 +66,38 @@ class ViewNewsViewController: UIViewController {
         view.addSubview(image)
         view.addSubview(titleLbl)
         view.addSubview(bodyLbl)
+        view.addSubview(authorLbl)
+        view.addSubview(dateLbl)
         let imageHeight = view.bounds.width * 0.75
         
-        NSLayoutConstraint.activate([
-            image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            image.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            image.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            image.heightAnchor.constraint(equalToConstant: imageHeight),
-        ])
-        
         titleLbl.snp.makeConstraints { make in
-            make.top.equalTo(image.snp.bottom).offset(10)
-            make.leading.trailing.equalTo(image)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(5)
+            make.leading.equalTo(view.safeAreaLayoutGuide).offset(10)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).offset(-10)
+        }
+        
+        image.snp.makeConstraints { make in
+            make.top.equalTo(titleLbl.snp.bottom).offset(0)
+            make.leading.trailing.equalTo(titleLbl)
+            make.height.equalTo(imageHeight)
+        }
+        
+        authorLbl.snp.makeConstraints { make in
+            make.top.equalTo(image.snp.bottom).offset(5)
+            make.leading.equalTo(image.snp.leading)
+        }
+        
+        dateLbl.snp.makeConstraints { make in
+            make.top.equalTo(authorLbl)
+            make.trailing.equalTo(image)
         }
         
         bodyLbl.snp.makeConstraints { make in
-            make.top.equalTo(titleLbl.snp.bottom).offset(10)
-            make.leading.trailing.equalTo(image)
+            make.top.equalTo(authorLbl.snp.bottom).offset(10)
+            make.leading.trailing.equalTo(titleLbl)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+        
     }
 
 }

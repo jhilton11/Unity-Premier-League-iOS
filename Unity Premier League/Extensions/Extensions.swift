@@ -82,7 +82,7 @@ extension String {
         do {
             let doc = try SwiftSoup.parse(self)
             return try doc.text()
-        } catch Exception.Error(let type, let message) {
+        } catch Exception.Error(_, _) {
             return ""
         } catch {
             return ""
@@ -92,7 +92,7 @@ extension String {
 
 var dateFormatter: DateFormatter  {
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "EEE, dd MMM YYYY"
+    dateFormatter.dateFormat = "EEE, dd MMMM YYYY"
     return dateFormatter
 }
 
